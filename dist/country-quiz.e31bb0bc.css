@@ -21,7 +21,12 @@ body {
 
 .images {
     width: 30%;
-    height: 50%;
+}
+
+.btn-wrapper {
+    display: grid;
+    width: 20%;
+    row-gap: 20px;
 }
 
 /*# sourceMappingURL=/country-quiz.e31bb0bc.css.map */

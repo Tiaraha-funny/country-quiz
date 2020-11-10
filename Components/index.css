@@ -21,5 +21,10 @@ body {
 
 .images {
     width: 30%;
-    height: 50%;
+}
+
+.btn-wrapper {
+    display: grid;
+    width: 20%;
+    row-gap: 20px;
 }
