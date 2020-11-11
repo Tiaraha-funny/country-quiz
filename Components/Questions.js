@@ -1,5 +1,5 @@
 const Questions = [
     {
-        "which one of them is the capital of"
+       "first-question": "which one of them is the capital of",
     }
 ]

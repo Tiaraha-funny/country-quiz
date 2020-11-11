@@ -1,19 +1,25 @@
 import React, { Component } from "react";
-import { winSvg } from "./images/undraw_winners.svg";
+import winSvg from "./images/undraw_winners.svg";
+import "./index.css";
 
-function WinComponents({ goodGuess }) {
+function WinComponents({ goodGuess, show, leaveResult }) {
+
+  const showHideClassName = show ? "modal display-block" : "modal display-none";
+
   return (
-    <div className="main">
-      <div className="wrapper">
+    <div className={showHideClassName}>
+      <div className="modal-main">
+      <div className="main-wrapper">
         <div>
           <img src={winSvg} />
         </div>
-        <div className="headings">
+        <div className="modal-headings">
           <h2>Results</h2>
           <h3>You got: {goodGuess} correct answer </h3>
         </div>
+        <button onClick={leaveResult} className="tryBtn">Try again</button>
       </div>
-      <button>Try again</button>
+      </div>
     </div>
   );
 }

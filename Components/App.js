@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
 
 import "./index.css";
 
 //importing the display file show it in the state
 import QuizsComponents from "./QuizsComponents";
-import WinComponents from "./WinComponents";
+
+//To show the result, we sreact this element
+const container = document.createElement("div");
+document.body.appendChild(container);
 
 //I used class here so that it won't be tough for me to handle the if statement
 
@@ -21,19 +23,23 @@ class Country extends Component {
       userIsWin: false,
       goodGuess: 0,
       bgBtns: { backgroundColor: "#ffffff" },
+      button: false,
+      hover: false,
+      on: false,
+      question: "",
     };
 
     //We have to use bind in class component to access our functions
 
     this.getRandomCountry = this.getRandomCountry.bind(this);
     this.checkWin = this.checkWin.bind(this);
+    this.mouseHover = this.mouseHover.bind(this);
   }
 
   //Instead of using useEffect in hooks we use componentDidMount in class but they are the same uses
 
   async componentDidMount() {
     const COUNTRY_URL = "https://restcountries.eu/rest/v2/all";
-    const NAME = "https://restcountries.eu/rest/v2/all?fields=name";
 
     const res = await fetch(COUNTRY_URL);
     const data = await res.json();
@@ -66,7 +72,7 @@ class Country extends Component {
       randomOpt3.name,
     ];
 
-    //We are looping over the randoms to get the other
+    //We are looping over the randoms to get the other country names
 
     function loopTheCountriesThroughArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -81,6 +87,14 @@ class Country extends Component {
       randomCountry: random,
       randomOptions: randomOptions,
       userIsWin: false,
+      question: "is the capital city of",
+    });
+  }
+
+  //If the mouse is hovering the buttons, the background color changes
+  mouseHover() {
+    this.setState({
+      hover: true,
     });
   }
 
@@ -93,23 +107,27 @@ class Country extends Component {
     if (answer === userGuess) {
       this.setState({
         userIsWin: true,
+        button: false,
         goodGuess: this.state.goodGuess + 1,
         bgBtns: { backgroundColor: "green" },
-      })
-    } 
-    else {
+        question: "is the capital city of"
+      });
+    } else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
+        button: true,
         bgBtns: { backgroundColor: "red" },
+        question: "which country does this flag belong to"
       });
     }
 
     console.log(answer);
+    console.log(this.state.button);
+    console.log(this.state.question);
 
     //Wait a second before the result is came
 
     setTimeout(() => {
-      this.getRandomCountry();
       this.setState({
         userIsWin: false,
         bgBtns: { backgroundColor: "#ffffff" },
@@ -120,25 +138,21 @@ class Country extends Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route path="/">
-            <QuizsComponents
-              randomCountry={this.state.randomCountry}
-              randomOptions={this.state.randomOptions}
-              userGuess={this.state.userGuess}
-              goodGuess={this.state.goodGuess}
-              checkWin={this.checkWin}
-              bgBtns={this.state.bgBtns}
-              nextQuestion={this.nextQuestion}
-            />
-          </Route>
-          <Route path="/">
-            <WinComponents
-              goodGuess={this.state.goodGuess}
-              checkWin={this.checkWin}
-            />
-          </Route>
-        </Switch>
+        <header className="headings">
+          <h1>Country Quiz</h1>
+        </header>
+        <QuizsComponents
+          randomCountry={this.state.randomCountry}
+          randomOptions={this.state.randomOptions}
+          userGuess={this.state.userGuess}
+          goodGuess={this.state.goodGuess}
+          checkWin={this.checkWin}
+          bgBtns={this.state.bgBtns}
+          button={this.state.button}
+          mouseHover={this.mouseHover}
+          getRandomCountry={this.getRandomCountry}
+          question={this.state.question}
+        />
       </div>
     );
   }
