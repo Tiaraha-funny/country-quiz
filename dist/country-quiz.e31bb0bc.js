@@ -29882,7 +29882,7 @@ function WinComponents({
     src: _undraw_winners.default
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-headings"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("h3", null, "You got: ", goodGuess, " correct answer ")), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("h3", null, "You got:", /*#__PURE__*/_react.default.createElement("q", null, " ", goodGuess), " correct answer ")), /*#__PURE__*/_react.default.createElement("button", {
     onClick: leaveResult,
     className: "tryBtn"
   }, "Try again"))));
@@ -29969,41 +29969,37 @@ function QuizsComponents({
     className: "btn-wrapper"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "btns",
-    style: {
-      bgBtns,
-      hoverStyle
-    },
+    style: bgBtns,
     value: randomOptions[0],
     onClick: () => checkWin(randomOptions[0]),
     onMouseOver: mouseHover
-  }, "A ", randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "A-"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "name"
+  }, " ", randomOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
     onMouseOver: mouseHover,
     className: "btns",
-    style: {
-      bgBtns,
-      hoverStyle
-    },
+    style: bgBtns,
     value: randomOptions[1],
     onClick: () => checkWin(randomOptions[1])
-  }, "B ", randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "B-"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "name"
+  }, " ", randomOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
     onMouseOver: mouseHover,
     className: "btns",
-    style: {
-      bgBtns,
-      hoverStyle
-    },
+    style: bgBtns,
     value: randomOptions[2],
     onClick: () => checkWin(randomOptions[2])
-  }, "C ", randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "C-"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "name"
+  }, randomOptions[2], " ")), /*#__PURE__*/_react.default.createElement("button", {
     onMouseOver: mouseHover,
     className: "btns",
-    style: {
-      bgBtns,
-      hoverStyle
-    },
+    style: bgBtns,
     value: randomOptions[3],
     onClick: () => checkWin(randomOptions[3])
-  }, "D ", randomOptions[3]), /*#__PURE__*/_react.default.createElement("div", null, button === false ? "" : /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "D-"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "name"
+  }, " ", randomOptions[3])), /*#__PURE__*/_react.default.createElement("div", null, button === false ? "" : /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: showResult
   }, "Next"))), /*#__PURE__*/_react.default.createElement(_WinComponents.default, {
@@ -30110,7 +30106,7 @@ class Country extends _react.Component {
   } //It checkes if the user's guess is true or false
 
 
-  checkWin(event) {
+  checkWin(event, id) {
     const answer = this.state.randomCountry.name;
     const userGuess = event;
 
@@ -30148,6 +30144,10 @@ class Country extends _react.Component {
         }
       });
     }, 1000);
+    const findIdByRegin = this.state.countries.find(region => {
+      region.capital === id;
+    });
+    console.log(findIdByRegin);
   }
 
   render() {
@@ -30211,7 +30211,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49751" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50621" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

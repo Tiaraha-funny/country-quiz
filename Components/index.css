@@ -23,6 +23,11 @@ body {
     max-width: 100%;
 }
 
+q {
+    color: greenyellow;
+    font-size: 35px;
+}
+
 .images {
     width: 30%;
 }
@@ -59,6 +64,22 @@ body {
     margin-bottom: 20px;
     cursor: pointer;
     outline: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: green;
+    background-color: red;
+}
+
+.name {
+    width: inherit;
+}
+
+.btns:hover {
+    background-color:  #F9A826;
 }
 
 .next {

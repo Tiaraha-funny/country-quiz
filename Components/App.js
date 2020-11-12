@@ -99,7 +99,7 @@ class Country extends Component {
 
   //It checkes if the user's guess is true or false
 
-  checkWin(event) {
+  checkWin(event, id) {
     const answer = this.state.randomCountry.name;
     const userGuess = event;
 
@@ -112,7 +112,8 @@ class Country extends Component {
         question: "is the capital city of",
       });
       this.getRandomCountry();
-    } else if (answer !== userGuess) {
+    } 
+    else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
         button: true,
@@ -133,6 +134,11 @@ class Country extends Component {
         bgBtns: { backgroundColor: "#ffffff" },
       });
     }, 1000);
+
+    const findIdByRegin = this.state.countries.find((region) => {
+      region.capital === id;
+    });
+    console.log(findIdByRegin);
   }
 
   render() {

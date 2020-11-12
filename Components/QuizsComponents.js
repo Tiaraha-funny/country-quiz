@@ -49,58 +49,79 @@ function QuizsComponents({
         <img src={adventure} className="headerImg" />
         <div className="content">
           <h2>
-            {question === "which country does this flag belong to" 
-            ? <div className="flags"><img className="images" src={randomCountry.flag} alt="Country flag"/><br/> {question} ?</div>
-            : <div>{randomCountry.capital} {question} ?</div>}
+            {question === "which country does this flag belong to" ? (
+              <div className="flags">
+                <img
+                  className="images"
+                  src={randomCountry.flag}
+                  alt="Country flag"
+                />
+                <br /> {question} ?
+              </div>
+            ) : (
+              <div>
+                {randomCountry.capital} {question} ?
+              </div>
+            )}
           </h2>
         </div>
       </div>
       <div className="btn-wrapper">
+
         <button
           className="btns"
-          style={{ bgBtns, hoverStyle }}
+          style={bgBtns}
           value={randomOptions[0]}
           onClick={() => checkWin(randomOptions[0])}
           onMouseOver={mouseHover}
         >
-          A {randomOptions[0]}
+          <div>A-</div>
+          <div className="name"> {randomOptions[0]}</div>
         </button>
+
         <button
           onMouseOver={mouseHover}
           className="btns"
-          style={{ bgBtns, hoverStyle }}
+          style={bgBtns}
           value={randomOptions[1]}
           onClick={() => checkWin(randomOptions[1])}
         >
-          B {randomOptions[1]}
+          <div>B-</div> 
+          <div className="name"> {randomOptions[1]}</div>
         </button>
+
         <button
           onMouseOver={mouseHover}
           className="btns"
-          style={{ bgBtns, hoverStyle }}
+          style={bgBtns}
           value={randomOptions[2]}
           onClick={() => checkWin(randomOptions[2])}
         >
-          C {randomOptions[2]}
+          <div>C-</div>
+          <div className="name">{randomOptions[2]} </div>
         </button>
+
         <button
           onMouseOver={mouseHover}
           className="btns"
-          style={{ bgBtns, hoverStyle }}
+          style={bgBtns}
           value={randomOptions[3]}
           onClick={() => checkWin(randomOptions[3])}
         >
-          D {randomOptions[3]}
+          <div>D-</div> 
+          <div className="name"> {randomOptions[3]}</div>
         </button>
+
         <div>
-        {button === false ? (
-          ""
-        ) : (
-          <button className="next" onClick={showResult}>
-            Next
-          </button>
-        )}
+          {button === false ? (
+            ""
+          ) : (
+            <button className="next" onClick={showResult}>
+              Next
+            </button>
+          )}
         </div>
+
       </div>
 
       <WinComponents
