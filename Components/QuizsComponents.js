@@ -10,7 +10,7 @@ function QuizsComponents({
   goodGuess,
   checkWin,
   button,
-  userIsWin,
+  countries,
   mouseHover,
   hover,
   getRandomCountry,
@@ -48,6 +48,9 @@ function QuizsComponents({
       <div className="wrapper">
         <img src={adventure} className="headerImg" />
         <div className="content">
+
+          <p>{!countries.length && "Loading..."}</p>
+          
           <h2>
             {question === "which country does this flag belong to" ? (
               <div className="flags">

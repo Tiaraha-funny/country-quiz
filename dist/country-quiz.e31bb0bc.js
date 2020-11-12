@@ -29920,7 +29920,7 @@ function QuizsComponents({
   goodGuess,
   checkWin,
   button,
-  userIsWin,
+  countries,
   mouseHover,
   hover,
   getRandomCountry
@@ -29959,7 +29959,7 @@ function QuizsComponents({
     className: "headerImg"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, question === "which country does this flag belong to" ? /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, !countries.length && "Loading..."), /*#__PURE__*/_react.default.createElement("h2", null, question === "which country does this flag belong to" ? /*#__PURE__*/_react.default.createElement("div", {
     className: "flags"
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: "images",
@@ -30163,7 +30163,8 @@ class Country extends _react.Component {
       button: this.state.button,
       mouseHover: this.mouseHover,
       getRandomCountry: this.getRandomCountry,
-      question: this.state.question
+      question: this.state.question,
+      countries: this.state.countries
     }));
   }
 

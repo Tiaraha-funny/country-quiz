@@ -158,6 +158,7 @@ class Country extends Component {
           mouseHover={this.mouseHover}
           getRandomCountry={this.getRandomCountry}
           question={this.state.question}
+          countries={this.state.countries}
         />
       </div>
     );
