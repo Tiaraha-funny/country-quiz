@@ -30053,47 +30053,40 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 const container = document.createElement("div");
 document.body.appendChild(container); //I used class here so that it won't be tough for me to handle the if statement
 
-class Country extends _react.Component {
-  constructor(props) {
-    //By using class we have to set this constructor followed by super method and the state after that
-    super(props); //this are the state that we are going to access in the browser
+function Country(props) {
+  //this are the state that we are going to access in the browser
+  const [countries, setCountries] = (0, _react.useState)([]);
+  const [randomCountry, setRandomCountry] = (0, _react.useState)({});
+  const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
+  const [userIsWin, setUserIsWin] = (0, _react.useState)(false);
+  const [goodGuess, setGoodGuess] = (0, _react.useState)(0);
+  const [bgBtns, setBgBtns] = (0, _react.useState)({
+    backgroundColor: "#ffffff"
+  });
+  const [nextButton, setNextButton] = (0, _react.useState)(false);
+  const [hover, setHover] = (0, _react.useState)(false);
+  const [question, setQuestion] = (0, _react.useState)(""); //Instead of using useEffect in hooks we use componentDidMount in class but they are the same uses
 
-    this.state = {
-      countries: [],
-      randomCountry: {},
-      randomOptions: [],
-      userIsWin: false,
-      goodGuess: 0,
-      bgBtns: {
-        backgroundColor: "#ffffff"
-      },
-      nextButton: false,
-      hover: false,
-      question: ""
-    }; //We have to use bind in class component to access our functions
-
-    this.getRandomCountry = this.getRandomCountry.bind(this);
-    this.checkWin = this.checkWin.bind(this);
-    this.mouseHover = this.mouseHover.bind(this);
-  } //Instead of using useEffect in hooks we use componentDidMount in class but they are the same uses
-
-
-  async componentDidMount() {
+  (0, _react.useEffect)(() => {
     const COUNTRY_URL = "https://restcountries.eu/rest/v2/all";
-    const res = await fetch(COUNTRY_URL);
-    const data = await res.json();
-    this.setState({
-      countries: data
-    });
-    this.getRandomCountry();
-  } //To random all of the names of the countries and the flags one by one we are using random method not map it in the display
 
+    async function fetchApi() {
+      const res = await fetch(COUNTRY_URL);
+      const data = await res.json();
+      setCountries({
+        countries: data
+      });
+      getRandomCountry();
+    }
 
-  getRandomCountry() {
-    const random = this.state.countries[Math.floor(Math.random() * this.state.countries.length)];
-    const randomOpt1 = this.state.countries[Math.floor(Math.random() * this.state.countries.length)];
-    const randomOpt2 = this.state.countries[Math.floor(Math.random() * this.state.countries.length)];
-    const randomOpt3 = this.state.countries[Math.floor(Math.random() * this.state.countries.length)]; //To get the names from the randoms
+    fetchApi();
+  }, []); //To random all of the names of the countries and the flags one by one we are using random method not map it in the display
+
+  function getRandomCountry() {
+    const random = countries[Math.floor(Math.random() * countries.length)];
+    const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
+    const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
+    const randomOpt3 = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
 
     const randomOptions = [random.name, randomOpt1.name, randomOpt2.name, randomOpt3.name]; //We are looping over the randoms to get the other country names
 
@@ -30105,84 +30098,74 @@ class Country extends _react.Component {
     }
 
     loopTheCountriesThroughArray(randomOptions);
-    this.setState({
-      randomCountry: random,
-      randomOptions: randomOptions,
-      userIsWin: false,
-      question: "is the capital city of"
+    setRandomCountry({
+      random
     });
-  } //If the mouse is hovering the buttons, the background color changes
-
-
-  mouseHover() {
-    this.setState({
-      hover: true
-    });
+    setRandomOptions([random]);
+    setUserIsWin(false);
+    setQuestion("is the capital city of");
   } //It checkes if the user's guess is true or false
 
 
-  checkWin(event, id) {
-    const answer = this.state.randomCountry.name;
-    const userGuess = event;
+  function checkWin(e) {
+    const answer = randomCountry.name;
+    const userGuess = e;
 
     if (answer === userGuess) {
-      this.setState({
-        userIsWin: true,
-        nextButton: false,
-        goodGuess: this.state.goodGuess + 1,
-        bgBtns: {
-          backgroundColor: "green"
-        },
-        question: "is the capital city of"
+      setUserIsWin(true);
+      setNextButton(false);
+      setGoodGuess(guess => {
+        guess.goodGuess + 1;
       });
-      this.getRandomCountry();
+      setBgBtns({
+        backgroundColor: "green"
+      });
+      setQuestion("is the capital city of");
+      getRandomCountry();
     } else if (answer !== userGuess) {
-      this.setState({
-        userIsWin: false,
-        nextButton: true,
-        bgBtns: {
-          backgroundColor: "red"
-        },
-        question: "which country does this flag belong to"
+      setUserIsWin(false);
+      setNextButton(true);
+      setBgBtns({
+        backgroundColor: "red"
       });
+      setQuestion("which country does this flag belong to");
     }
 
-    console.log(this.state.randomCountry.capital);
-    console.log(this.state.question);
-    console.log(answer); //Wait a second before the result is came
+    console.log(userIsWin);
+    console.log(randomCountry.capital);
+    console.log(question);
+    console.log(answer);
+  } //Wait a second before the result is came
 
-    setTimeout(() => {
-      this.setState({
-        userIsWin: false,
-        bgBtns: {
-          backgroundColor: "#ffffff"
-        }
-      });
-    }, 1000);
-    const findIdByRegin = this.state.countries.find(region => {
-      region.capital === id;
+
+  setTimeout(() => {
+    setUserIsWin(false);
+    setBgBtns({
+      backgroundColor: "#ffffff"
     });
-    console.log(findIdByRegin);
+  }, 1000); //If the mouse is hovering the buttons, the background color changes
+
+  function mouseHover() {
+    setHover({
+      hover: true
+    });
   }
 
-  render() {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
-      className: "headings"
-    }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement(_QuizsComponents.default, {
-      randomCountry: this.state.randomCountry,
-      randomOptions: this.state.randomOptions,
-      userGuess: this.state.userGuess,
-      goodGuess: this.state.goodGuess,
-      checkWin: this.checkWin,
-      bgBtns: this.state.bgBtns,
-      nextButton: this.state.nextButton,
-      mouseHover: this.mouseHover,
-      getRandomCountry: this.getRandomCountry,
-      question: this.state.question,
-      countries: this.state.countries
-    }));
-  }
-
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+    className: "headings"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement(_QuizsComponents.default, {
+    randomCountry: randomCountry,
+    randomOptions: randomOptions,
+    goodGuess: goodGuess,
+    checkWin: checkWin,
+    bgBtns: bgBtns,
+    nextButton: nextButton,
+    mouseHover: mouseHover,
+    getRandomCountry: getRandomCountry,
+    question: question,
+    countries: countries,
+    userIsWin: userIsWin
+  }));
 }
 
 var _default = Country;
