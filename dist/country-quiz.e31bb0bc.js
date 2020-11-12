@@ -29922,7 +29922,7 @@ function QuizsComponents({
   button,
   userIsWin,
   mouseHover,
-  // hover,
+  hover,
   getRandomCountry
 }) {
   const [show, setShow] = (0, _react.useState)(false); //To show the result when the answer is not true
@@ -29940,13 +29940,15 @@ function QuizsComponents({
     setShow(false);
     getRandomCountry();
   }; //When the moise is hoveing the buttons the style is changing
-  // let hoverStyle;
-  // if (hover) {
-  //   hoverStyle = {
-  //     backgroundColor: "#F9A826",
-  //   };
-  // }
 
+
+  let hoverStyle;
+
+  if (hover) {
+    hoverStyle = {
+      backgroundColor: "#F9A826"
+    };
+  }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
