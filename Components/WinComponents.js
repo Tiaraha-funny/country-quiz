@@ -14,7 +14,9 @@ function WinComponents({ goodGuess, show, leaveResult }) {
           </div>
           <div className="modal-headings">
             <h2>Results</h2>
-            <h3>You got:<q> {goodGuess}</q> correct answer </h3>
+            <h3>
+              You got:<q> {goodGuess}</q> correct answer{" "}
+            </h3>
           </div>
           <button onClick={leaveResult} className="tryBtn">
             Try again

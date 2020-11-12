@@ -23,8 +23,8 @@ class Country extends Component {
       userIsWin: false,
       goodGuess: 0,
       bgBtns: { backgroundColor: "#ffffff" },
-      button: false,
-      // hover: false,
+      nextButton: false,
+      hover: false,
       question: "",
     };
 
@@ -106,7 +106,7 @@ class Country extends Component {
     if (answer === userGuess) {
       this.setState({
         userIsWin: true,
-        button: false,
+        nextButton: false,
         goodGuess: this.state.goodGuess + 1,
         bgBtns: { backgroundColor: "green" },
         question: "is the capital city of",
@@ -116,7 +116,7 @@ class Country extends Component {
     else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
-        button: true,
+        nextButton: true,
         bgBtns: { backgroundColor: "red" },
         question: "which country does this flag belong to",
       });
@@ -154,7 +154,7 @@ class Country extends Component {
           goodGuess={this.state.goodGuess}
           checkWin={this.checkWin}
           bgBtns={this.state.bgBtns}
-          button={this.state.button}
+          nextButton={this.state.nextButton}
           mouseHover={this.mouseHover}
           getRandomCountry={this.getRandomCountry}
           question={this.state.question}

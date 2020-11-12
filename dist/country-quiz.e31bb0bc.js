@@ -29882,7 +29882,7 @@ function WinComponents({
     src: _undraw_winners.default
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-headings"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("h3", null, "You got:", /*#__PURE__*/_react.default.createElement("q", null, " ", goodGuess), " correct answer ")), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("h3", null, "You got:", /*#__PURE__*/_react.default.createElement("q", null, " ", goodGuess), " correct answer", " ")), /*#__PURE__*/_react.default.createElement("button", {
     onClick: leaveResult,
     className: "tryBtn"
   }, "Try again"))));
@@ -29919,7 +29919,7 @@ function QuizsComponents({
   question,
   goodGuess,
   checkWin,
-  button,
+  nextButton,
   countries,
   mouseHover,
   hover,
@@ -29971,35 +29971,50 @@ function QuizsComponents({
     className: "btns",
     style: bgBtns,
     value: randomOptions[0],
-    onClick: () => checkWin(randomOptions[0]),
-    onMouseOver: mouseHover
+    onClick: () => checkWin(randomOptions[0])
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: hoverStyle,
+    onMouseEnter: mouseHover,
+    className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", null, "A-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
-    onMouseOver: mouseHover,
+  }, " ", randomOptions[0]))), /*#__PURE__*/_react.default.createElement("button", {
+    onMouseEnter: mouseHover,
     className: "btns",
     style: bgBtns,
     value: randomOptions[1],
     onClick: () => checkWin(randomOptions[1])
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: hoverStyle,
+    onMouseEnter: mouseHover,
+    className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", null, "B-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
-    onMouseOver: mouseHover,
+  }, " ", randomOptions[1]))), /*#__PURE__*/_react.default.createElement("button", {
+    onMouseEnter: mouseHover,
     className: "btns",
     style: bgBtns,
     value: randomOptions[2],
     onClick: () => checkWin(randomOptions[2])
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: hoverStyle,
+    onMouseEnter: mouseHover,
+    className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", null, "C-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, randomOptions[2], " ")), /*#__PURE__*/_react.default.createElement("button", {
-    onMouseOver: mouseHover,
+  }, randomOptions[2], " "))), /*#__PURE__*/_react.default.createElement("button", {
+    onMouseEnter: mouseHover,
     className: "btns",
     style: bgBtns,
     value: randomOptions[3],
     onClick: () => checkWin(randomOptions[3])
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: hoverStyle,
+    onMouseEnter: mouseHover,
+    className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", null, "D-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[3])), /*#__PURE__*/_react.default.createElement("div", null, button === false ? "" : /*#__PURE__*/_react.default.createElement("button", {
+  }, " ", randomOptions[3]))), /*#__PURE__*/_react.default.createElement("div", null, nextButton === false ? "" : /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: showResult
   }, "Next"))), /*#__PURE__*/_react.default.createElement(_WinComponents.default, {
@@ -30052,8 +30067,8 @@ class Country extends _react.Component {
       bgBtns: {
         backgroundColor: "#ffffff"
       },
-      button: false,
-      // hover: false,
+      nextButton: false,
+      hover: false,
       question: ""
     }; //We have to use bind in class component to access our functions
 
@@ -30113,7 +30128,7 @@ class Country extends _react.Component {
     if (answer === userGuess) {
       this.setState({
         userIsWin: true,
-        button: false,
+        nextButton: false,
         goodGuess: this.state.goodGuess + 1,
         bgBtns: {
           backgroundColor: "green"
@@ -30124,7 +30139,7 @@ class Country extends _react.Component {
     } else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
-        button: true,
+        nextButton: true,
         bgBtns: {
           backgroundColor: "red"
         },
@@ -30160,7 +30175,7 @@ class Country extends _react.Component {
       goodGuess: this.state.goodGuess,
       checkWin: this.checkWin,
       bgBtns: this.state.bgBtns,
-      button: this.state.button,
+      nextButton: this.state.nextButton,
       mouseHover: this.mouseHover,
       getRandomCountry: this.getRandomCountry,
       question: this.state.question,
@@ -30212,7 +30227,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50033" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

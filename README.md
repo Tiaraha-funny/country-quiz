@@ -1,18 +1,13 @@
 # Country Quiz
 
-Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:
+## Structure
 
-![image](./assets/quiz1.png)
-![image](./assets/quiz2.png)
-![image](./assets/quiz3.png)
-![image](./assets/quiz4.png)
-
--   User story: I can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
--   User story: I can see select an answer
--   User story: I can see if my answer is correct or incorrect
--   User story: When I answer correctly, I can move on to the next question
--   User story: When I answer incorrectly, I can see my results and try again
--   User story: I can try again
+-  You can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
+-  You can see select an answer in the buttons
+-   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appers if it is wrong or change another question if the answer is correct. 
+-   When you answer correctly, you can move on to the next question
+-   When you answer incorrectly, you can see your results and try again
+-   You can try again
 
 **Icon**: https://google.github.io/material-design-icons/
 
@@ -26,51 +21,31 @@ As long as you fulfill all the user stories, you can give your personal touches 
 
 Once you completed, submit your solutions by providing URLs for both GitHub repository and live app on Netlify and explain briefly what you have done.
 
-For the custom domain url you'll enter in netlify, please use the following naming convention : **country-quiz-_YOUR_FIRSTNAME_.netlify.app** (replace YOUR_FIRSTNAME by your firstname)
+## Screenshot
 
-Good luck everybody!
+1- The first quiz 
 
-Template for your readme :
+![fresh-quiz](./fresh-quiz.png)
 
-<!-- Please update value in the {}  -->
+2- When your answer is correct
 
-<h1 align="center">{Your project name}</h1>
+![correct-answer](./correct.png)
 
-<div align="center">
-  <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
-    </a>
-  </h3>
-</div>
+3- When your answer is wrong
 
-<!-- TABLE OF CONTENTS -->
+![wrong-answer](./wrong.png)
 
-## Table of Contents
+4- To get another try for the quiz and see the result
 
--   [Overview](#overview)
-    -   [Built With](#built-with)
--   [Features](#features)
--   [How to use](#how-to-use)
--   [Contact](#contact)
--   [Acknowledgements](#acknowledgements)
+![try-again](./result.png)
 
-<!-- OVERVIEW -->
+## My Experience
 
-## Overview
+I didn't have a lot of experience
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+## What I learned and improved are
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
--   Where can I see your demo?
--   What was your experience?
--   What have you learned/improved?
--   Your wisdom? :)
+There are many things that I learned from this project, such as using class react and react hooks at the same time. I tried to use router and link method but it seemed didn't work because I need a very clear path. I improved a lot on using state and fetch in class, instead of using useEffect we can use componentDidMount with async.
 
 ### Built With
 
@@ -99,12 +74,8 @@ $ npm install
 $ npm start
 ```
 
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
 ## Contact
 
--   Website [your-website.com](https://{your-web-site-link})
--   GitHub [@your-username](https://{github.com/your-usermame})
--   Twitter [@your-twitter](https://{twitter.com/your-username})
+-   Website [my-website.com](https://country-quiz-petah.netlify.app/)
+-   GitHub [@mygithub-account](https://github.com/Tiaraha-funny)
+-   Email [@my-email-adress](mailto:peta.jea@onja.org)
