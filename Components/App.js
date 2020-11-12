@@ -24,8 +24,7 @@ class Country extends Component {
       goodGuess: 0,
       bgBtns: { backgroundColor: "#ffffff" },
       button: false,
-      hover: false,
-      on: false,
+      // hover: false,
       question: "",
     };
 
@@ -110,20 +109,21 @@ class Country extends Component {
         button: false,
         goodGuess: this.state.goodGuess + 1,
         bgBtns: { backgroundColor: "green" },
-        question: "is the capital city of"
+        question: "is the capital city of",
       });
+      this.getRandomCountry();
     } else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
         button: true,
         bgBtns: { backgroundColor: "red" },
-        question: "which country does this flag belong to"
+        question: "which country does this flag belong to",
       });
     }
 
-    console.log(answer);
-    console.log(this.state.button);
+    console.log(this.state.randomCountry.capital);
     console.log(this.state.question);
+    console.log(answer);
 
     //Wait a second before the result is came
 

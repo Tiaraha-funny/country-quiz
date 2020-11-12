@@ -60,9 +60,6 @@ body {
     cursor: pointer;
     outline: none;
 }
-.btns:hover {
-    background-color:  #F9A826;
-}
 
 .next {
     padding: 16px;

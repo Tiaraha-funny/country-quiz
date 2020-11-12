@@ -29920,8 +29920,9 @@ function QuizsComponents({
   goodGuess,
   checkWin,
   button,
+  userIsWin,
   mouseHover,
-  hover,
+  // hover,
   getRandomCountry
 }) {
   const [show, setShow] = (0, _react.useState)(false); //To show the result when the answer is not true
@@ -29939,15 +29940,13 @@ function QuizsComponents({
     setShow(false);
     getRandomCountry();
   }; //When the moise is hoveing the buttons the style is changing
+  // let hoverStyle;
+  // if (hover) {
+  //   hoverStyle = {
+  //     backgroundColor: "#F9A826",
+  //   };
+  // }
 
-
-  let hoverStyle;
-
-  if (hover) {
-    hoverStyle = {
-      backgroundColor: "#F9A826"
-    };
-  }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
@@ -30056,8 +30055,7 @@ class Country extends _react.Component {
         backgroundColor: "#ffffff"
       },
       button: false,
-      hover: false,
-      on: false,
+      // hover: false,
       question: ""
     }; //We have to use bind in class component to access our functions
 
@@ -30124,6 +30122,7 @@ class Country extends _react.Component {
         },
         question: "is the capital city of"
       });
+      this.getRandomCountry();
     } else if (answer !== userGuess) {
       this.setState({
         userIsWin: false,
@@ -30135,9 +30134,9 @@ class Country extends _react.Component {
       });
     }
 
-    console.log(answer);
-    console.log(this.state.button);
-    console.log(this.state.question); //Wait a second before the result is came
+    console.log(this.state.randomCountry.capital);
+    console.log(this.state.question);
+    console.log(answer); //Wait a second before the result is came
 
     setTimeout(() => {
       this.setState({
@@ -30210,7 +30209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60278" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49751" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

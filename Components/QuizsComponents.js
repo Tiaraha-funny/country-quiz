@@ -10,6 +10,7 @@ function QuizsComponents({
   goodGuess,
   checkWin,
   button,
+  userIsWin,
   mouseHover,
   hover,
   getRandomCountry,
@@ -40,8 +41,7 @@ function QuizsComponents({
     hoverStyle = {
       backgroundColor: "#F9A826",
     };
-  }
-
+  
   return (
     <div className="main">
       <div className="wrapper">
