@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import "./index.css";
 
 //importing the display file show it in the state
@@ -11,35 +10,48 @@ document.body.appendChild(container);
 
 //I used class here so that it won't be tough for me to handle the if statement
 
-function Country(props) {
+function Country() {
   //this are the state that we are going to access in the browser
   const [countries, setCountries] = useState([]);
   const [randomCountry, setRandomCountry] = useState({});
   const [randomOptions, setRandomOptions] = useState([]);
   const [userIsWin, setUserIsWin] = useState(false);
-  const [goodGuess, setGoodGuess] = useState(0);
+  const [score, setScore] = useState(0);
   const [bgBtns, setBgBtns] = useState({ backgroundColor: "#ffffff" });
   const [nextButton, setNextButton] = useState(false);
-  const [hover, setHover] = useState(false);
   const [question, setQuestion] = useState("");
 
-  //Instead of using useEffect in hooks we use componentDidMount in class but they are the same uses
+  //We use useEffect in hooks to fecth the data by creating this async function
+
+  const fetchCountries = async () => {
+    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const data = await response.json();
+    setCountries(data);
+    getRandomCountry();
+    console.log(data);
+  };
+
+  //run the fetch countries at once and random it after the button is clicked
 
   useEffect(() => {
-    const COUNTRY_URL = "https://restcountries.eu/rest/v2/all";
-    async function fetchApi() {
-      const res = await fetch(COUNTRY_URL);
-      const data = await res.json();
-      setCountries({ countries: data });
+    fetchCountries();
+  }, []);
+
+  //run the countries if the countries's lenght started run by the countries
+
+  useEffect(() => {
+    if (countries.length) {
       getRandomCountry();
     }
-    fetchApi();
-
-  }, []);
+  }, [countries]);
 
   //To random all of the names of the countries and the flags one by one we are using random method not map it in the display
 
   function getRandomCountry() {
+    //if the lenght of the countries is zero, return it null. if not, random it.
+
+    if (countries.length == 0) return null;
+
     const random = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
@@ -54,44 +66,36 @@ function Country(props) {
       randomOpt3.name,
     ];
 
-    //We are looping over the randoms to get the other country names
+    //Set these random in place that need them to be set
 
-    function loopTheCountriesThroughArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    loopTheCountriesThroughArray(randomOptions);
-
-    setRandomCountry({ random });
-    setRandomOptions([random]);
-    setUserIsWin(false);
+    setRandomCountry(random);
+    setRandomOptions(randomOptions);
+    setUserIsWin("");
     setQuestion("is the capital city of");
   }
 
   //It checkes if the user's guess is true or false
 
   function checkWin(e) {
-
     const answer = randomCountry.name;
     const userGuess = e;
+
+    //if the answer is choosen of what the user guess set all of these conditions
 
     if (answer === userGuess) {
       setUserIsWin(true);
       setNextButton(false);
 
-      setGoodGuess((guess) => {
-        guess.goodGuess + 1;
-      });
+      setScore((guess) => guess + 1);
 
       setBgBtns({ backgroundColor: "green" });
       setQuestion("is the capital city of");
 
       getRandomCountry();
+    }
 
-    } else if (answer !== userGuess) {
+    //if not, change it and set into other thing
+    else if (answer !== userGuess) {
       setUserIsWin(false);
       setNextButton(true);
 
@@ -100,7 +104,8 @@ function Country(props) {
       setQuestion("which country does this flag belong to");
     }
 
-    console.log(userIsWin);
+    //to see the right answer in the console log
+
     console.log(randomCountry.capital);
     console.log(question);
     console.log(answer);
@@ -113,12 +118,7 @@ function Country(props) {
     setBgBtns({ backgroundColor: "#ffffff" });
   }, 1000);
 
-  //If the mouse is hovering the buttons, the background color changes
-  function mouseHover() {
-    setHover({
-      hover: true,
-    });
-  }
+  //return this component to run or state
 
   return (
     <div>
@@ -128,11 +128,12 @@ function Country(props) {
       <QuizsComponents
         randomCountry={randomCountry}
         randomOptions={randomOptions}
-        goodGuess={goodGuess}
+        score={score}
+        setScore={setScore}
         checkWin={checkWin}
         bgBtns={bgBtns}
         nextButton={nextButton}
-        mouseHover={mouseHover}
+        setNextButton={setNextButton}
         getRandomCountry={getRandomCountry}
         question={question}
         countries={countries}

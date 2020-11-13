@@ -7,14 +7,18 @@ function QuizsComponents({
   randomCountry,
   bgBtns,
   question,
-  goodGuess,
+  score,
+  setScore,
   checkWin,
   nextButton,
+  setNextButton,
   countries,
-  mouseHover,
-  hover,
   getRandomCountry,
+  backgroundColor,
 }) {
+
+  //Setting the state of the modal to show the result
+
   const [show, setShow] = useState(false);
 
   //To show the result when the answer is not true
@@ -31,28 +35,20 @@ function QuizsComponents({
     e.preventDefault();
     console.log("go back to try");
     setShow(false);
+    setScore(0);
+    setNextButton(false);
     getRandomCountry();
   };
 
-  //When the moise is hoveing the buttons the style is changing
-
-  let hoverStyle;
-  if (hover) {
-    hoverStyle = {
-      backgroundColor: "#F9A826",
-    };
-  }
+//Return this component when the quiz is opened
 
   return (
     <div className="main">
       <div className="wrapper">
-        <img src={adventure} className="headerImg" />
+        <img src={adventure} alt="winner of the world" className="headerImg" />
         <div className="content">
-          {/* When you refresh the page, you will see the loafing first then the */}
 
-          {/* state is coming up */}
-
-          <p>{!countries.length && "Loading..."}</p>
+          <p style={{fontSize: "30px"}}>{!countries.length && "Loading....."}</p>
 
           <h2>
             {question === "which country does this flag belong to" ? (
@@ -80,46 +76,43 @@ function QuizsComponents({
           value={randomOptions[0]}
           onClick={() => checkWin(randomOptions[0])}
         >
-          <div style={hoverStyle} onMouseEnter={mouseHover} className="btnContent">
+          <div className="btnContent">
             <div>A-</div>
             <div className="name"> {randomOptions[0]}</div>
           </div>
         </button>
 
         <button
-          onMouseEnter={mouseHover}
           className="btns"
           style={bgBtns}
           value={randomOptions[1]}
           onClick={() => checkWin(randomOptions[1])}
         >
-          <div style={hoverStyle} onMouseEnter={mouseHover} className="btnContent">
+          <div className="btnContent">
             <div>B-</div>
             <div className="name"> {randomOptions[1]}</div>
           </div>
         </button>
 
         <button
-          onMouseEnter={mouseHover}
           className="btns"
           style={bgBtns}
           value={randomOptions[2]}
           onClick={() => checkWin(randomOptions[2])}
         >
-          <div style={hoverStyle} onMouseEnter={mouseHover} className="btnContent">
+          <div className="btnContent">
             <div>C-</div>
             <div className="name">{randomOptions[2]} </div>
           </div>
         </button>
 
         <button
-          onMouseEnter={mouseHover}
           className="btns"
           style={bgBtns}
           value={randomOptions[3]}
           onClick={() => checkWin(randomOptions[3])}
         >
-          <div style={hoverStyle} onMouseEnter={mouseHover} className="btnContent">
+          <div className="btnContent">
             <div>D-</div>
             <div className="name"> {randomOptions[3]}</div>
           </div>
@@ -139,7 +132,7 @@ function QuizsComponents({
       <WinComponents
         showResult={showResult}
         show={show}
-        goodGuess={goodGuess}
+        score={score}
         checkWin={checkWin}
         leaveResult={leaveResult}
       />

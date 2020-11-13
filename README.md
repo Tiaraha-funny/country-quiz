@@ -1,6 +1,6 @@
 # Country Quiz
 
-## Structure
+## **Structure**
 
 -  You can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
 -  You can see select an answer in the buttons
@@ -9,19 +9,10 @@
 -   When you answer incorrectly, you can see your results and try again
 -   You can try again
 
-**Icon**: https://google.github.io/material-design-icons/
-
-**API**: https://restcountries.eu/. Use data from the API to create questions and answers.
-
-**Design** : https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1
-
 **Live app** : https://country-quiz-app.netlify.app/
 
-As long as you fulfill all the user stories, you can give your personal touches by adding transition, using your own images, changing colors, or even creating your own layout,...
 
-Once you completed, submit your solutions by providing URLs for both GitHub repository and live app on Netlify and explain briefly what you have done.
-
-## Screenshot
+## **Screenshot**
 
 1- The first quiz 
 
@@ -29,27 +20,27 @@ Once you completed, submit your solutions by providing URLs for both GitHub repo
 
 2- When your answer is correct
 
-![correct-answer](./correct.png)
+![correct-answer](./right-answer.png)
 
 3- When your answer is wrong
 
-![wrong-answer](./wrong.png)
+![wrong-answer](./incorrect-answer.png)
 
 4- To get another try for the quiz and see the result
 
 ![try-again](./result.png)
 
-## My Experience
+## **My Experience**
 
 I didn't have a lot of experience
 
-## What I learned and improved are
+## What I learned and improved
 
-There are many things that I learned from this project, such as using class react and react hooks at the same time. I tried to use router and link method but it seemed didn't work because I need a very clear path. I improved a lot on using state and fetch in class, instead of using useEffect we can use componentDidMount with async.
+There are many things that I learned from this project, such as using class react and react hooks at the same time. I tried to use router and link method at first but it seemed didn't work because I need a very clear path. I improved a lot on using state and fetch in class, instead of using useEffect we can use componentDidMount with async.
+
+Lately, I changed my code class component into react hooks. I found it very hard. Because the improvement, I manage to do it.
 
 ### Built With
-
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 -   [React](https://reactjs.org/)
 

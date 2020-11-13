@@ -103,6 +103,14 @@ q {
     background-color: #F9A826;
 }
 
+.incorrect {
+    background-color: red;
+}
+
+.correct {
+    background-color: green;
+}
+
 
 /* //-----------------------------Modal----------------------------------- */
 
@@ -128,7 +136,9 @@ q {
     position: fixed;
     background: white;
     width: 70%;
-    height: 381px;
+    height: 400px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     margin: auto;
     top: 100px;
     border-radius: 24px;
