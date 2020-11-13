@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+
+//import all the component needed
+
 import WinComponents from "./WinComponents";
 import adventure from "./images/undraw_adventure.svg";
+
+//I destructure the variables needed instead of propping it by using props
 
 function QuizsComponents({
   randomOptions,
@@ -14,7 +19,6 @@ function QuizsComponents({
   setNextButton,
   countries,
   getRandomCountry,
-  backgroundColor,
 }) {
 
   //Setting the state of the modal to show the result
@@ -77,7 +81,7 @@ function QuizsComponents({
           onClick={() => checkWin(randomOptions[0])}
         >
           <div className="btnContent">
-            <div>A-</div>
+            <div className="item">A-</div>
             <div className="name"> {randomOptions[0]}</div>
           </div>
         </button>
@@ -89,7 +93,7 @@ function QuizsComponents({
           onClick={() => checkWin(randomOptions[1])}
         >
           <div className="btnContent">
-            <div>B-</div>
+            <div className="item">B-</div>
             <div className="name"> {randomOptions[1]}</div>
           </div>
         </button>
@@ -101,7 +105,7 @@ function QuizsComponents({
           onClick={() => checkWin(randomOptions[2])}
         >
           <div className="btnContent">
-            <div>C-</div>
+            <div className="item">C-</div>
             <div className="name">{randomOptions[2]} </div>
           </div>
         </button>
@@ -113,7 +117,7 @@ function QuizsComponents({
           onClick={() => checkWin(randomOptions[3])}
         >
           <div className="btnContent">
-            <div>D-</div>
+            <div className="item">D-</div>
             <div className="name"> {randomOptions[3]}</div>
           </div>
         </button>

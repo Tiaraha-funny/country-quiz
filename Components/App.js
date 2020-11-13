@@ -4,14 +4,14 @@ import "./index.css";
 //importing the display file show it in the state
 import QuizsComponents from "./QuizsComponents";
 
-//To show the result, we sreact this element
+//To show the result, we creact this element
 const container = document.createElement("div");
 document.body.appendChild(container);
 
 //I used class here so that it won't be tough for me to handle the if statement
 
 function Country() {
-  //this are the state that we are going to access in the browser
+  //these are the states that we are going to access in the browser
   const [countries, setCountries] = useState([]);
   const [randomCountry, setRandomCountry] = useState({});
   const [randomOptions, setRandomOptions] = useState([]);
@@ -23,7 +23,7 @@ function Country() {
 
   //We use useEffect in hooks to fecth the data by creating this async function
 
-  const fetchCountries = async () => {
+  const fetchCountriesFromApi = async () => {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
     const data = await response.json();
     setCountries(data);
@@ -34,7 +34,7 @@ function Country() {
   //run the fetch countries at once and random it after the button is clicked
 
   useEffect(() => {
-    fetchCountries();
+    fetchCountriesFromApi();
   }, []);
 
   //run the countries if the countries's lenght started run by the countries
@@ -52,23 +52,23 @@ function Country() {
 
     if (countries.length == 0) return null;
 
-    const random = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt3 = countries[Math.floor(Math.random() * countries.length)];
+    const randomName = countries[Math.floor(Math.random() * countries.length)];
+    const randomFirstOption = countries[Math.floor(Math.random() * countries.length)];
+    const randomSecondOption = countries[Math.floor(Math.random() * countries.length)];
+    const randomThirdOption = countries[Math.floor(Math.random() * countries.length)];
 
     //To get the names from the randoms
 
     const randomOptions = [
-      random.name,
-      randomOpt1.name,
-      randomOpt2.name,
-      randomOpt3.name,
+      randomName.name,
+      randomFirstOption.name,
+      randomSecondOption.name,
+      randomThirdOption.name,
     ];
 
     //Set these random in place that need them to be set
 
-    setRandomCountry(random);
+    setRandomCountry(randomName);
     setRandomOptions(randomOptions);
     setUserIsWin("");
     setQuestion("is the capital city of");

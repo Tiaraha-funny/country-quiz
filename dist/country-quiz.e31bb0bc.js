@@ -29916,6 +29916,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+//import all the component needed
+//I destructure the variables needed instead of propping it by using props
 function QuizsComponents({
   randomOptions,
   randomCountry,
@@ -29927,8 +29929,7 @@ function QuizsComponents({
   nextButton,
   setNextButton,
   countries,
-  getRandomCountry,
-  backgroundColor
+  getRandomCountry
 }) {
   //Setting the state of the modal to show the result
   const [show, setShow] = (0, _react.useState)(false); //To show the result when the answer is not true
@@ -29979,7 +29980,9 @@ function QuizsComponents({
     onClick: () => checkWin(randomOptions[0])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "A-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "item"
+  }, "A-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, " ", randomOptions[0]))), /*#__PURE__*/_react.default.createElement("button", {
     className: "btns",
@@ -29988,7 +29991,9 @@ function QuizsComponents({
     onClick: () => checkWin(randomOptions[1])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "B-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "item"
+  }, "B-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, " ", randomOptions[1]))), /*#__PURE__*/_react.default.createElement("button", {
     className: "btns",
@@ -29997,7 +30002,9 @@ function QuizsComponents({
     onClick: () => checkWin(randomOptions[2])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "C-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "item"
+  }, "C-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, randomOptions[2], " "))), /*#__PURE__*/_react.default.createElement("button", {
     className: "btns",
@@ -30006,7 +30013,9 @@ function QuizsComponents({
     onClick: () => checkWin(randomOptions[3])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "D-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "item"
+  }, "D-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, " ", randomOptions[3]))), /*#__PURE__*/_react.default.createElement("div", null, nextButton === false ? "" : /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
@@ -30043,12 +30052,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 //importing the display file show it in the state
-//To show the result, we sreact this element
+//To show the result, we creact this element
 const container = document.createElement("div");
 document.body.appendChild(container); //I used class here so that it won't be tough for me to handle the if statement
 
 function Country() {
-  //this are the state that we are going to access in the browser
+  //these are the states that we are going to access in the browser
   const [countries, setCountries] = (0, _react.useState)([]);
   const [randomCountry, setRandomCountry] = (0, _react.useState)({});
   const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
@@ -30060,7 +30069,7 @@ function Country() {
   const [nextButton, setNextButton] = (0, _react.useState)(false);
   const [question, setQuestion] = (0, _react.useState)(""); //We use useEffect in hooks to fecth the data by creating this async function
 
-  const fetchCountries = async () => {
+  const fetchCountriesFromApi = async () => {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
     const data = await response.json();
     setCountries(data);
@@ -30070,7 +30079,7 @@ function Country() {
 
 
   (0, _react.useEffect)(() => {
-    fetchCountries();
+    fetchCountriesFromApi();
   }, []); //run the countries if the countries's lenght started run by the countries
 
   (0, _react.useEffect)(() => {
@@ -30082,14 +30091,14 @@ function Country() {
   function getRandomCountry() {
     //if the lenght of the countries is zero, return it null. if not, random it.
     if (countries.length == 0) return null;
-    const random = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
-    const randomOpt3 = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
+    const randomName = countries[Math.floor(Math.random() * countries.length)];
+    const randomFirstOption = countries[Math.floor(Math.random() * countries.length)];
+    const randomSecondOption = countries[Math.floor(Math.random() * countries.length)];
+    const randomThirdOption = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
 
-    const randomOptions = [random.name, randomOpt1.name, randomOpt2.name, randomOpt3.name]; //Set these random in place that need them to be set
+    const randomOptions = [randomName.name, randomFirstOption.name, randomSecondOption.name, randomThirdOption.name]; //Set these random in place that need them to be set
 
-    setRandomCountry(random);
+    setRandomCountry(randomName);
     setRandomOptions(randomOptions);
     setUserIsWin("");
     setQuestion("is the capital city of");
