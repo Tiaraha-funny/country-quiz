@@ -29844,7 +29844,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_winners.svg":[function(require,module,exports) {
+},{"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_winners.svg":[function(require,module,exports) {
 module.exports = "/undraw_winners.f1835114.svg";
 },{}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure.29f13e88.svg";
