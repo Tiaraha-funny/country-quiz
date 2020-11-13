@@ -9,7 +9,7 @@
 -   When you answer incorrectly, you can see your results and try again
 -   You can try again
 
-**Live app** : https://country-quiz-app.netlify.app/
+**Live app with netlify** : https://country-quiz-petah.netlify.app/
 
 
 ## **Screenshot**
