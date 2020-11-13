@@ -24,7 +24,7 @@
 
 3- When your answer is wrong
 
-![wrong-answer](./incorrect-answer.png)
+![wrong-answer](./wrong-ans.png)
 
 4- To get another try for the quiz and see the result
 
