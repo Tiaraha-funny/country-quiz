@@ -29929,7 +29929,10 @@ function QuizsComponents({
   nextButton,
   setNextButton,
   countries,
-  getRandomCountry
+  getRandomCountry,
+  handleClick,
+  rightAnswer,
+  number
 }) {
   //Setting the state of the modal to show the result
   const [show, setShow] = (0, _react.useState)(false); //To show the result when the answer is not true
@@ -29965,19 +29968,16 @@ function QuizsComponents({
     style: {
       fontSize: "30px"
     }
-  }, !countries.length && "Loading....."), /*#__PURE__*/_react.default.createElement("h2", null, question === "which country does this flag belong to" ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "flags"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "images",
-    src: randomCountry.flag,
-    alt: "Country flag"
-  }), /*#__PURE__*/_react.default.createElement("br", null), " ", question, " ?") : /*#__PURE__*/_react.default.createElement("div", null, randomCountry.capital, " ", question, " ?")))), /*#__PURE__*/_react.default.createElement("div", {
+  }, !countries.length && "Loading....."), number === 0 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomCountry.flag
+  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 2 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from "))), /*#__PURE__*/_react.default.createElement("div", {
     className: "btn-wrapper"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "btns",
     style: bgBtns,
     value: randomOptions[0],
-    onClick: () => checkWin(randomOptions[0])
+    onClick: checkWin,
+    ref: randomOptions[0] === randomCountry.name ? rightAnswer : null,
+    className: randomOptions[0] === randomCountry.name ? "rightAnswer" : "wrongAnswer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29985,10 +29985,11 @@ function QuizsComponents({
   }, "A-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, " ", randomOptions[0]))), /*#__PURE__*/_react.default.createElement("button", {
-    className: "btns",
     style: bgBtns,
     value: randomOptions[1],
-    onClick: () => checkWin(randomOptions[1])
+    onClick: checkWin,
+    ref: randomOptions[1] === randomCountry.name ? rightAnswer : null,
+    className: randomOptions[1] === randomCountry.name ? "rightAnswer" : "wrongAnswer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29996,10 +29997,11 @@ function QuizsComponents({
   }, "B-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, " ", randomOptions[1]))), /*#__PURE__*/_react.default.createElement("button", {
-    className: "btns",
     style: bgBtns,
     value: randomOptions[2],
-    onClick: () => checkWin(randomOptions[2])
+    onClick: checkWin,
+    ref: randomOptions[2] === randomCountry.name ? rightAnswer : null,
+    className: randomOptions[2] === randomCountry.name ? "rightAnswer" : "wrongAnswer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -30007,10 +30009,11 @@ function QuizsComponents({
   }, "C-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
   }, randomOptions[2], " "))), /*#__PURE__*/_react.default.createElement("button", {
-    className: "btns",
     style: bgBtns,
     value: randomOptions[3],
-    onClick: () => checkWin(randomOptions[3])
+    onClick: checkWin,
+    ref: randomOptions[3] === randomCountry.name ? rightAnswer : null,
+    className: randomOptions[3] === randomCountry.name ? "rightAnswer" : "wrongAnswer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "btnContent"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -30061,103 +30064,162 @@ function Country() {
   const [countries, setCountries] = (0, _react.useState)([]);
   const [randomCountry, setRandomCountry] = (0, _react.useState)({});
   const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
-  const [userIsWin, setUserIsWin] = (0, _react.useState)(false);
   const [score, setScore] = (0, _react.useState)(0);
+  const [nextButton, setNextButton] = (0, _react.useState)(false);
+  const [userIsWin, setUserIsWin] = (0, _react.useState)(false); // isResult
+  // added some
+
+  const [showAnswer, setShowAnswer] = (0, _react.useState)(false);
+  const [IsStart, setIsStart] = (0, _react.useState)(false);
+  const [number, setNumber] = (0, _react.useState)(0);
+  const rightAnswer = (0, _react.useRef)(null); // Left didn't need
+
   const [bgBtns, setBgBtns] = (0, _react.useState)({
     backgroundColor: "#ffffff"
   });
-  const [nextButton, setNextButton] = (0, _react.useState)(false);
   const [question, setQuestion] = (0, _react.useState)(""); //We use useEffect in hooks to fecth the data by creating this async function
 
   const fetchCountriesFromApi = async () => {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
-    const data = await response.json();
-    setCountries(data);
-    getRandomCountry();
-    console.log(data);
+    const countryData = await response.json();
+    setCountries(countryData); //  getRandomCountry();
+    //  console.log(data);
   }; //run the fetch countries at once and random it after the button is clicked
 
 
   (0, _react.useEffect)(() => {
     fetchCountriesFromApi();
-  }, []); //run the countries if the countries's lenght started run by the countries
-
-  (0, _react.useEffect)(() => {
-    if (countries.length) {
-      getRandomCountry();
-    }
-  }, [countries]); //To random all of the names of the countries and the flags one by one we are using random method not map it in the display
+  }, [score]); //run the countries if the countries's lenght started run by the countries
+  // useEffect(() => {
+  //   if (countries.length) {
+  //     getRandomCountry();
+  //   }
+  // }, [countries]);
+  //To random all of the names of the countries and the flags one by one we are using random method not map it in the display
 
   function getRandomCountry() {
     //if the lenght of the countries is zero, return it null. if not, random it.
+    setIsStart(true);
     if (countries.length == 0) return null;
     const randomName = countries[Math.floor(Math.random() * countries.length)];
     const randomFirstOption = countries[Math.floor(Math.random() * countries.length)];
     const randomSecondOption = countries[Math.floor(Math.random() * countries.length)];
     const randomThirdOption = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
 
-    const randomOptions = [randomName.name, randomFirstOption.name, randomSecondOption.name, randomThirdOption.name]; //Set these random in place that need them to be set
+    const randomOptions = [randomName.name, randomFirstOption.name, randomSecondOption.name, randomThirdOption.name];
+    randomOptions.sort(() => {
+      return 0.5 - Math.random();
+    }); //Set these random in place that need them to be set
 
     setRandomCountry(randomName);
-    setRandomOptions(randomOptions);
-    setUserIsWin("");
-    setQuestion("is the capital city of");
-  } //It checkes if the user's guess is true or false
+    setRandomOptions(randomOptions); // setUserIsWin("");
+    // setQuestion("is the capital city of");
+  }
 
+  function handleClick(e) {
+    if (e.target.value === randomCountry.name) {
+      setNextButton(true);
+      e.target.style.backgroundColor = "#60BF88";
+      e.target.style.color = "white";
+      e.target.style.borderColor = "#60BF88";
+      setShowAnswer(true);
+    } else {
+      e.target.style.backgroundColor = "#EA8282";
+      e.target.style.color = "white";
+      e.target.style.borderColor = "#EA8282";
+      rightAnswer.current.style.backgroundColor = "#60BF88";
+      rightAnswer.current.style.color = "white";
+      rightAnswer.current.style.borderColor = "#60BF88";
+      setNextButton(true);
+      setShowAnswer(false);
+    }
+  }
 
-  function checkWin(e) {
-    const answer = randomCountry.name;
-    const userGuess = e; //if the answer is choosen of what the user guess set all of these conditions
+  function checkWin() {
+    setNumber(Math.floor(Math.random() * 3));
 
-    if (answer === userGuess) {
-      setUserIsWin(true);
-      setNextButton(false);
-      setScore(guess => guess + 1);
-      setBgBtns({
-        backgroundColor: "green"
-      });
-      setQuestion("is the capital city of");
+    if (showAnswer) {
+      //got to the next question
       getRandomCountry();
-    } //if not, change it and set into other thing
-    else if (answer !== userGuess) {
-        setUserIsWin(false);
-        setNextButton(true);
-        setBgBtns({
-          backgroundColor: "red"
-        });
-        setQuestion("which country does this flag belong to");
-      } //to see the right answer in the console log
+      setNextButton(false);
+      setScore(prevScore => prevScore + 1);
+      rightAnswer.current.style.backgroundColor = "transparent";
+      rightAnswer.current.style.color = "#6066D0";
+    } else {
+      //display the result
+      setUserIsWin(true);
+    }
+  } //It checkes if the user's guess is true or false
+  // function checkWin(e) {
+  //   const answer = randomCountry.name;
+  //   const userGuess = e;
+  //
+  //   //if the answer is choosen of what the user guess set all of these conditions
+  //
+  //   if (answer === userGuess) {
+  //     setUserIsWin(true);
+  //     setNextButton(false);
+  //
+  //     setScore((guess) => guess + 1);
+  //
+  //     const filterIdForBgClr = countries.find((bgCl) => bgCl.name != id);
+  //     console.log(filterIdForBgClr);
+  //     if (filterIdForBgClr) {
+  //       setBgBtns({ backgroundColor: "green" });
+  //     }
+  //     setQuestion("is the capital city of");
+  //
+  //     getRandomCountry();
+  //   }
+  //
+  //   //if not, change it and set into other thing
+  //   else if (answer !== userGuess) {
+  //     setUserIsWin(false);
+  //     setNextButton(true);
+  //
+  //     const filterIdForBgClr = countries.find((bgCl) => bgCl.name != id);
+  //     console.log(filterIdForBgClr);
+  //     if (filterIdForBgClr) {
+  //       setBgBtns({ backgroundColor: "red" });
+  //     }
+  //
+  //     setQuestion("which country does this flag belong to");
+  //   }
+  //
+  //   //to see the right answer in the console log
+  //
+  //   console.log(randomCountry.capital);
+  //   console.log(question);
+  //   console.log(answer);
+  // }
+  //
+  // //Wait a second before the result is came
+  //
+  // setTimeout(() => {
+  //   setUserIsWin(false);
+  //   setBgBtns({ backgroundColor: "#ffffff" });
+  // }, 1000);
+  //return this component to run or state
 
-
-    console.log(randomCountry.capital);
-    console.log(question);
-    console.log(answer);
-  } //Wait a second before the result is came
-
-
-  setTimeout(() => {
-    setUserIsWin(false);
-    setBgBtns({
-      backgroundColor: "#ffffff"
-    });
-  }, 1000); //return this component to run or state
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement(_QuizsComponents.default, {
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_QuizsComponents.default, {
     randomCountry: randomCountry,
     randomOptions: randomOptions,
     score: score,
     setScore: setScore,
     checkWin: checkWin,
-    bgBtns: bgBtns,
     nextButton: nextButton,
     setNextButton: setNextButton,
     getRandomCountry: getRandomCountry,
     question: question,
     countries: countries,
-    userIsWin: userIsWin
-  }));
+    userIsWin: userIsWin,
+    handleClick: handleClick,
+    rightAnswer: rightAnswer,
+    number: number
+  })));
 }
 
 var _default = Country;
@@ -30202,7 +30264,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56863" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57056" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

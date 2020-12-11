@@ -14,7 +14,7 @@ h2 {
 }
 
 .container {
-    width: 70%;
+    width: 60%;
     margin: auto;
 }
 
@@ -47,7 +47,7 @@ q {
 
 
 .main {
-    width: 70%;
+    width: 50%;
     margin: auto;
     background-color: #ffffff;
     padding: 20px;
@@ -159,11 +159,19 @@ q {
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+
+  .rightAnswer {
+      background-color: red;
+  }
+
+  .wrongAnswer {
+      background-color: green;
+  }
   
   .modal-main {
     position: fixed;
     background: white;
-    width: 70%;
+    width: 50%;
     height: 400px;
     padding-top: 30px;
     padding-bottom: 30px;

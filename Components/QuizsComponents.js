@@ -19,8 +19,10 @@ function QuizsComponents({
   setNextButton,
   countries,
   getRandomCountry,
+  handleClick,
+  rightAnswer,
+  number,
 }) {
-
   //Setting the state of the modal to show the result
 
   const [show, setShow] = useState(false);
@@ -44,42 +46,37 @@ function QuizsComponents({
     getRandomCountry();
   };
 
-//Return this component when the quiz is opened
+  //Return this component when the quiz is opened
 
   return (
     <div className="main">
       <div className="wrapper">
         <img src={adventure} alt="winner of the world" className="headerImg" />
         <div className="content">
+          <p style={{ fontSize: "30px" }}>
+            {!countries.length && "Loading....."}
+          </p>
 
-          <p style={{fontSize: "30px"}}>{!countries.length && "Loading....."}</p>
+          {number === 0 && 
+                <header>
+                    <img src={randomCountry.flag}/>
+                    <h3>Which country does this flag belong to?</h3>
+                </header>} 
+            {number === 1 && <h3>{randomCountry.capital} is the the capital of </h3> }
+            {number === 2 && <h3>{randomCountry.demonym} are people from </h3>} 
 
-          <h2>
-            {question === "which country does this flag belong to" ? (
-              <div className="flags">
-                <img
-                  className="images"
-                  src={randomCountry.flag}
-                  alt="Country flag"
-                />
-                <br /> {question} ?
-              </div>
-            ) : (
-              <div>
-                {randomCountry.capital} {question} ?
-              </div>
-            )}
-          </h2>
         </div>
       </div>
 
       <div className="btn-wrapper">
         <button
-          className="btns"
           style={bgBtns}
           value={randomOptions[0]}
-          onClick={() => checkWin(randomOptions[0])}
+          onClick={checkWin}
+          ref={randomOptions[0] === randomCountry.name ? rightAnswer : null}
+          className={randomOptions[0] === randomCountry.name ? "rightAnswer" : "wrongAnswer"}
         >
+
           <div className="btnContent">
             <div className="item">A-</div>
             <div className="name"> {randomOptions[0]}</div>
@@ -87,10 +84,11 @@ function QuizsComponents({
         </button>
 
         <button
-          className="btns"
           style={bgBtns}
           value={randomOptions[1]}
-          onClick={() => checkWin(randomOptions[1])}
+          onClick={checkWin}
+          ref={randomOptions[1] === randomCountry.name ? rightAnswer : null}
+          className={randomOptions[1] === randomCountry.name ? "rightAnswer" : "wrongAnswer"}
         >
           <div className="btnContent">
             <div className="item">B-</div>
@@ -99,10 +97,11 @@ function QuizsComponents({
         </button>
 
         <button
-          className="btns"
           style={bgBtns}
           value={randomOptions[2]}
-          onClick={() => checkWin(randomOptions[2])}
+          onClick={checkWin}
+          ref={randomOptions[2] === randomCountry.name ? rightAnswer : null}
+          className={randomOptions[2] === randomCountry.name ? "rightAnswer" : "wrongAnswer"}
         >
           <div className="btnContent">
             <div className="item">C-</div>
@@ -111,10 +110,11 @@ function QuizsComponents({
         </button>
 
         <button
-          className="btns"
           style={bgBtns}
           value={randomOptions[3]}
-          onClick={() => checkWin(randomOptions[3])}
+          onClick={checkWin}
+          ref={randomOptions[3] === randomCountry.name ? rightAnswer : null}
+          className={randomOptions[3] === randomCountry.name ? "rightAnswer" : "wrongAnswer"}
         >
           <div className="btnContent">
             <div className="item">D-</div>
