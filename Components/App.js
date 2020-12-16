@@ -72,30 +72,31 @@ function Country() {
     if (e.currentTarget.value === randomCountry.name) {
       setNextButton(true);
       e.currentTarget.style.backgroundColor = "#60BF88";
-      e.currentTarget.style.color = "white";
       e.currentTarget.style.borderColor = "#60BF88";
+      rightAnswer.current.classList.add("tickTrue");
       setShowAnswer(true);
-    } else {
+    } else if (e.currentTarget.value !== randomCountry.name) {
       e.currentTarget.style.backgroundColor = "#EA8282";
-      e.currentTarget.style.color = "white";
       e.currentTarget.style.borderColor = "#EA8282";
       rightAnswer.current.style.backgroundColor = "#60BF88";
-      rightAnswer.current.style.color = "white";
+      e.currentTarget.classList.add("tickFalse");
+      rightAnswer.current.classList.add("tickTrue");
       rightAnswer.current.style.borderColor = "#60BF88";
       setNextButton(true);
       setShowAnswer(false);
     }
   }
-  
+
   function checkWin() {
     setNumber(Math.floor(Math.random() * 3));
     if (showAnswer) {
       getRandomCountry();
       setNextButton(false);
       setScore((prevScore) => prevScore + 1);
-      rightAnswer.current.style.backgroundColor = " #ecebeb";
-      rightAnswer.current.style.color = "#6066D0";
-    } else if(!showAnswer) {
+      rightAnswer.current.style.backgroundColor = "#ffffff";
+      rightAnswer.current.style.borderColor = "#6066D0";
+      e.currentTarget.style.backgroundColor = "#EA8282";
+    } else if (!showAnswer) {
       setUserIsWin(true);
     }
   }
@@ -104,9 +105,6 @@ function Country() {
 
   return (
     <div>
-      <header className="headings">
-        <h1>Country Quiz</h1>
-      </header>
 
       {IsStart ? (
         <div>
@@ -135,9 +133,12 @@ function Country() {
         </div>
       ) : (
         <div className="startBtn">
-        <button onClick={getRandomCountry} className="startQuiz">
-          Start Game
-        </button>
+          <header className="headings__start">
+            <h1>Country Quiz</h1>
+          </header>
+          <button onClick={getRandomCountry} className="startQuiz">
+            Start Game
+          </button>
         </div>
       )}
     </div>

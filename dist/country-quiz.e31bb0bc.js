@@ -29844,7 +29844,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
+},{"./Fonts\\Poppins-Bold.woff2":[["Poppins-Bold.f596b36d.woff2","Components/Fonts/Poppins-Bold.woff2"],"Components/Fonts/Poppins-Bold.woff2"],"./Fonts\\Poppins-Bold.woff":[["Poppins-Bold.3baa3280.woff","Components/Fonts/Poppins-Bold.woff"],"Components/Fonts/Poppins-Bold.woff"],"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"./images\\tickTrue.svg":[["tickTrue.e9a80e85.svg","Components/images/tickTrue.svg"],"Components/images/tickTrue.svg"],"./images\\tickFalse.svg":[["tickFalse.ae695268.svg","Components/images/tickFalse.svg"],"Components/images/tickFalse.svg"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure.29f13e88.svg";
 },{}],"Components/QuizsComponents.js":[function(require,module,exports) {
 "use strict";
@@ -29873,11 +29873,12 @@ function QuizsComponents({
   nextButton,
   handleClick,
   rightAnswer,
-  number // countries,
-
+  number
 }) {
   //Return this component when the quiz is opened
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+    className: "headings"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper"
@@ -29887,11 +29888,7 @@ function QuizsComponents({
     className: "headerImg"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    style: {
-      fontSize: "30px"
-    }
-  }), number === 0 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, number === 0 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "images"
   }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 2 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from "))), /*#__PURE__*/_react.default.createElement("div", {
@@ -29940,7 +29937,7 @@ function QuizsComponents({
     className: "item"
   }, "D-"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[3]))), /*#__PURE__*/_react.default.createElement("div", null, nextButton && /*#__PURE__*/_react.default.createElement("button", {
+  }, " ", randomOptions[3])))), /*#__PURE__*/_react.default.createElement("div", null, nextButton && /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: checkWin
   }, "Next"))));
@@ -30074,15 +30071,15 @@ function Country() {
     if (e.currentTarget.value === randomCountry.name) {
       setNextButton(true);
       e.currentTarget.style.backgroundColor = "#60BF88";
-      e.currentTarget.style.color = "white";
       e.currentTarget.style.borderColor = "#60BF88";
+      rightAnswer.current.classList.add("tickTrue");
       setShowAnswer(true);
-    } else {
+    } else if (e.currentTarget.value !== randomCountry.name) {
       e.currentTarget.style.backgroundColor = "#EA8282";
-      e.currentTarget.style.color = "white";
       e.currentTarget.style.borderColor = "#EA8282";
       rightAnswer.current.style.backgroundColor = "#60BF88";
-      rightAnswer.current.style.color = "white";
+      e.currentTarget.classList.add("tickFalse");
+      rightAnswer.current.classList.add("tickTrue");
       rightAnswer.current.style.borderColor = "#60BF88";
       setNextButton(true);
       setShowAnswer(false);
@@ -30096,17 +30093,16 @@ function Country() {
       getRandomCountry();
       setNextButton(false);
       setScore(prevScore => prevScore + 1);
-      rightAnswer.current.style.backgroundColor = " #ecebeb";
-      rightAnswer.current.style.color = "#6066D0";
+      rightAnswer.current.style.backgroundColor = "#ffffff";
+      rightAnswer.current.style.borderColor = "#6066D0";
+      e.currentTarget.style.backgroundColor = "#EA8282";
     } else if (!showAnswer) {
       setUserIsWin(true);
     }
   } //return this component to run or state
 
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
-    className: "headings"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), IsStart ? /*#__PURE__*/_react.default.createElement("div", null, userIsWin ? /*#__PURE__*/_react.default.createElement(_Result.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, IsStart ? /*#__PURE__*/_react.default.createElement("div", null, userIsWin ? /*#__PURE__*/_react.default.createElement(_Result.default, {
     score: score,
     setUserIsWin: setUserIsWin,
     randomCountry: randomCountry,
@@ -30125,7 +30121,9 @@ function Country() {
     countries: countries
   })) : /*#__PURE__*/_react.default.createElement("div", {
     className: "startBtn"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("header", {
+    className: "headings__start"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("button", {
     onClick: getRandomCountry,
     className: "startQuiz"
   }, "Start Game")));
@@ -30173,7 +30171,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54605" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50266" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
