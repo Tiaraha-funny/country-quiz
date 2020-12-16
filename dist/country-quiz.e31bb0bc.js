@@ -29979,7 +29979,9 @@ function Result({
   }
 
   console.log(score);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+    className: "headings"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-main"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_adventure.default,
@@ -29994,7 +29996,7 @@ function Result({
   }, score), " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
     className: "tryAgainBtn",
     onClick: handleClickBtn
-  }, "Try again")));
+  }, "Try again"))));
 }
 
 var _default = Result;

@@ -20,21 +20,30 @@ function Result({
   console.log(score);
 
   return (
-    <div className="modal-main">
-      <div>
-        <img src={adventure} alt="winner of the world" className="headerImg" />
-      </div>
-      <div className="main-wrapper">
+    <div>
+      <header className="headings">
+        <h1>Country Quiz</h1>
+      </header>
+      <div className="modal-main">
         <div>
-          <img src={winSvg}  />
+          <img
+            src={adventure}
+            alt="winner of the world"
+            className="headerImg"
+          />
         </div>
-        <h2>Results</h2>
-        <p>
-          You got <b className="score">{score}</b> correct answers
-        </p>
-        <button className="tryAgainBtn" onClick={handleClickBtn}>
-          Try again
-        </button>
+        <div className="main-wrapper">
+          <div>
+            <img src={winSvg} />
+          </div>
+          <h2>Results</h2>
+          <p>
+            You got <b className="score">{score}</b> correct answers
+          </p>
+          <button className="tryAgainBtn" onClick={handleClickBtn}>
+            Try again
+          </button>
+        </div>
       </div>
     </div>
   );
