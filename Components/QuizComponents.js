@@ -6,7 +6,7 @@ import adventure from "./images/undraw_adventure.svg";
 
 //I destructure the variables needed instead of propping it by using props
 
-function QuizsComponents({
+function QuizComponents({
   randomOptions,
   randomCountry,
   checkWin,
@@ -49,11 +49,6 @@ function QuizsComponents({
             value={randomOptions[0]}
             onClick={handleClick}
             ref={randomOptions[0] === randomCountry.name ? rightAnswer : null}
-            className={
-              randomOptions[0] === randomCountry.name
-                ? "rightAnswer"
-                : "wrongAnswer"
-            }
           >
             <div className="btnContent">
               <div className="item">A-</div>
@@ -65,11 +60,6 @@ function QuizsComponents({
             value={randomOptions[1]}
             onClick={handleClick}
             ref={randomOptions[1] === randomCountry.name ? rightAnswer : null}
-            className={
-              randomOptions[1] === randomCountry.name
-                ? "rightAnswer"
-                : "wrongAnswer"
-            }
           >
             <div className="btnContent">
               <div className="item">B-</div>
@@ -81,11 +71,6 @@ function QuizsComponents({
             value={randomOptions[2]}
             onClick={handleClick}
             ref={randomOptions[2] === randomCountry.name ? rightAnswer : null}
-            className={
-              randomOptions[2] === randomCountry.name
-                ? "rightAnswer"
-                : "wrongAnswer"
-            }
           >
             <div className="btnContent">
               <div className="item">C-</div>
@@ -97,11 +82,6 @@ function QuizsComponents({
             value={randomOptions[3]}
             onClick={handleClick}
             ref={randomOptions[3] === randomCountry.name ? rightAnswer : null}
-            className={
-              randomOptions[3] === randomCountry.name
-                ? "rightAnswer"
-                : "wrongAnswer"
-            }
           >
             <div className="btnContent">
               <div className="item">D-</div>
@@ -122,4 +102,4 @@ function QuizsComponents({
   );
 }
 
-export default QuizsComponents;
+export default QuizComponents;

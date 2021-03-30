@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 
 //importing the display file to show it in the state
-import QuizsComponents from "./QuizsComponents";
+import QuizComponents from "./QuizComponents";
 import Result from "./Result";
 
 //I used class here so that it won't be tough for me to handle the if statement
@@ -18,6 +18,7 @@ function Country() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [IsStart, setIsStart] = useState(false);
   const [number, setNumber] = useState(0);
+
   const rightAnswer = useRef(null);
 
   //We use useEffect in hooks to fecth the data by creating this async function
@@ -67,21 +68,14 @@ function Country() {
   }
 
   function handleClick(e) {
-    console.log(e.currentTarget.value === randomCountry.name);
-
-    if (e.currentTarget.value === randomCountry.name) {
+  
+    if (e.currentTarget.value === randomCountry.name && !nextButton) {
       setNextButton(true);
-      e.currentTarget.style.backgroundColor = "#60BF88";
-      e.currentTarget.style.borderColor = "#60BF88";
-      rightAnswer.current.classList.add("tickTrue");
+      e.currentTarget.classList.add("right-answer");
       setShowAnswer(true);
-    } else if (e.currentTarget.value !== randomCountry.name) {
-      e.currentTarget.style.backgroundColor = "#EA8282";
-      e.currentTarget.style.borderColor = "#EA8282";
-      rightAnswer.current.style.backgroundColor = "#60BF88";
-      e.currentTarget.classList.add("tickFalse");
-      rightAnswer.current.classList.add("tickTrue");
-      rightAnswer.current.style.borderColor = "#60BF88";
+    } else if (e.currentTarget.value !== randomCountry.name && !nextButton) {
+      e.currentTarget.classList.add("wrong-answer");
+      rightAnswer.current.classList.add("right-answer");
       setNextButton(true);
       setShowAnswer(false);
     }
@@ -89,15 +83,12 @@ function Country() {
 
   function checkWin(e) {
     setNumber(Math.floor(Math.random() * 3));
+    rightAnswer.current.classList.remove("right-answer");
     if (showAnswer) {
       getRandomCountry();
       setNextButton(false);
       setUserIsWin(false);
       setScore((prevScore) => prevScore + 1);
-      rightAnswer.current.style.backgroundColor = "#ffffff";
-      rightAnswer.current.style.borderColor = "#6066D0";
-      e.currentTarget.style.backgroundColor = "#EA8282";
-      rightAnswer.current.classList.remove("tickTrue");
     } else if (!showAnswer) {
       setUserIsWin(true);
     }
@@ -120,7 +111,7 @@ function Country() {
               setNextButton={setNextButton}
             />
           ) : (
-            <QuizsComponents
+            <QuizComponents
               randomCountry={randomCountry}
               randomOptions={randomOptions}
               nextButton={nextButton}

@@ -62,31 +62,18 @@ h3 {
     grid-gap: 20px;
 }
 
-.btn-wrapper button {
+.wrongAnswer, .rightAnswer {
     border: 2px solid rgba(96, 102, 208, 0.7);
     background-color: #ffffff;
     box-sizing: border-box;
-}
-
-.btn-wrapper button:hover {
-    background-color: #F9A826;
-    /* color: rgba(96, 102, 208, 0.8); */
-    color: white;
-}
-
-.btnContent:hover {
-    /* color: #ffffff; */
-    /* background-color: #F9A826; */
-}
-
-.btn-wrapper button {
     border-radius: 12px;
     color: #6066D0;
 }
 
-.btn-wrapper button:hover {
-    color: #ffffff;
+.rightAnswer:hover, .wrongAnswer:hover {
     background-color: #F9A826;
+    color: #6066d0cc;
+    color: white;
 }
 
 .flages {
@@ -252,14 +239,16 @@ margin: 0;
     color: #ffffff;
   }
 
-  .tickTrue {
+  .right-answer {
     background-image: url(../Components/images/tickTrue.svg);
     background-repeat: no-repeat;
     background-position: right;
+    background-color: blue;
     }
 
-  .tickFalse{
+  .wrong-answer {
     background-image: url(../Components/images/tickFalse.svg);
     background-repeat: no-repeat;
     background-position: right;
+    background-color: red;
   }

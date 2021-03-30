@@ -10,7 +10,6 @@ function Result({
   setNextButton,
 }) {
   function handleClickBtn() {
-    //reset everything to default
     setUserIsWin(false);
     getRandomCountry();
     setScore(0);
