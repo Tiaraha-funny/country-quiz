@@ -87,15 +87,17 @@ function Country() {
     }
   }
 
-  function checkWin() {
+  function checkWin(e) {
     setNumber(Math.floor(Math.random() * 3));
     if (showAnswer) {
       getRandomCountry();
       setNextButton(false);
+      setUserIsWin(false);
       setScore((prevScore) => prevScore + 1);
       rightAnswer.current.style.backgroundColor = "#ffffff";
       rightAnswer.current.style.borderColor = "#6066D0";
       e.currentTarget.style.backgroundColor = "#EA8282";
+      rightAnswer.current.classList.remove("tickTrue");
     } else if (!showAnswer) {
       setUserIsWin(true);
     }
@@ -104,10 +106,9 @@ function Country() {
   //return this component to run or state
 
   return (
-    <div>
-
+    <>
       {IsStart ? (
-        <div>
+        <div className="container">
           {userIsWin ? (
             <Result
               score={score}
@@ -141,7 +142,7 @@ function Country() {
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

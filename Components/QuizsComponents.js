@@ -18,11 +18,12 @@ function QuizsComponents({
   //Return this component when the quiz is opened
 
   return (
-    <div>
+    <>
       <header className="headings">
         <h1>Country Quiz</h1>
       </header>
       <div className="main">
+        <div className="container">
         <div className="wrapper">
           <img
             src={adventure}
@@ -117,6 +118,7 @@ function QuizsComponents({
         </div>
       </div>
     </div>
+  </>
   );
 }
 

@@ -25,13 +25,6 @@ function Result({
         <h1>Country Quiz</h1>
       </header>
       <div className="modal-main">
-        <div>
-          <img
-            src={adventure}
-            alt="winner of the world"
-            className="headerImg"
-          />
-        </div>
         <div className="main-wrapper">
           <div>
             <img src={winSvg} />

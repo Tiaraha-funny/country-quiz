@@ -10,10 +10,18 @@
 body {
     font-family: "Poppins";
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    margin: 0;
     background-image: url(./images/background.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
+    height: 100vh;
     overflow-wrap: break-word;
+    padding-bottom: 25%;
 }
 
 button {
@@ -35,8 +43,8 @@ h3 {
 }
 
 .container {
-    width: 60%;
-    margin: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .headerImg {
@@ -62,10 +70,23 @@ h3 {
 
 .btn-wrapper button:hover {
     background-color: #F9A826;
+    /* color: rgba(96, 102, 208, 0.8); */
+    color: white;
+}
+
+.btnContent:hover {
+    /* color: #ffffff; */
+    /* background-color: #F9A826; */
 }
 
 .btn-wrapper button {
     border-radius: 12px;
+    color: #6066D0;
+}
+
+.btn-wrapper button:hover {
+    color: #ffffff;
+    background-color: #F9A826;
 }
 
 .flages {
@@ -88,11 +109,31 @@ q {
 
 .main {
     max-width: 464px;
+    max-height: 629px;
     margin: auto;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 24px;
     margin-bottom: 100px;
+}
+
+.main-wrapper > div {
+    margin-bottom: 80px;
+}
+
+.main-wrapper h2 {
+    font-size: 48px;
+line-height: 72px;
+color: #1D355D;
+margin: 0;
+
+}
+
+.main-wrapper p {
+    font-size: 18px;
+    font-weight: 200;
+    color: #1D355D;
+    margin: 0;
 }
 
 .headings {
@@ -117,12 +158,7 @@ q {
     margin: 0;
     margin-right: 0;
     border-radius: 10px;
-    color: #6066D0;
     font-size: 18px;
-}
-
-.btnContent:hover {
-    color: #ffffff;
 }
 
 .name {
@@ -150,6 +186,7 @@ q {
   .modal-main {
     background-color: white;
     max-width: 464px;
+    height: 542px;
     padding-bottom: 30px;
     margin: auto;
     border-radius: 24px;
@@ -172,6 +209,7 @@ q {
     font-size: 18px;
     line-height: 27px;
     color: #1d355d;
+    margin-top: 70px;
   }
 
   .tryAgainBtn:hover {
@@ -181,7 +219,7 @@ q {
 
   .score {
      color: #51e47d;
-    font-size: 25px;
+    font-size: 35px;
   }
 
   .startBtn {

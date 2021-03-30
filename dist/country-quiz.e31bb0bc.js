@@ -29772,7 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29804,7 +29804,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -29839,12 +29839,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"Components/index.css":[function(require,module,exports) {
+},{"./bundle-url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"Components/index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./Fonts\\Poppins-Bold.woff2":[["Poppins-Bold.f596b36d.woff2","Components/Fonts/Poppins-Bold.woff2"],"Components/Fonts/Poppins-Bold.woff2"],"./Fonts\\Poppins-Bold.woff":[["Poppins-Bold.3baa3280.woff","Components/Fonts/Poppins-Bold.woff"],"Components/Fonts/Poppins-Bold.woff"],"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"./images\\tickTrue.svg":[["tickTrue.e9a80e85.svg","Components/images/tickTrue.svg"],"Components/images/tickTrue.svg"],"./images\\tickFalse.svg":[["tickFalse.ae695268.svg","Components/images/tickFalse.svg"],"Components/images/tickFalse.svg"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
+},{"./Fonts\\Poppins-Bold.woff2":[["Poppins-Bold.f596b36d.woff2","Components/Fonts/Poppins-Bold.woff2"],"Components/Fonts/Poppins-Bold.woff2"],"./Fonts\\Poppins-Bold.woff":[["Poppins-Bold.3baa3280.woff","Components/Fonts/Poppins-Bold.woff"],"Components/Fonts/Poppins-Bold.woff"],"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"./images\\tickTrue.svg":[["tickTrue.e9a80e85.svg","Components/images/tickTrue.svg"],"Components/images/tickTrue.svg"],"./images\\tickFalse.svg":[["tickFalse.ae695268.svg","Components/images/tickFalse.svg"],"Components/images/tickFalse.svg"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure.29f13e88.svg";
 },{}],"Components/QuizsComponents.js":[function(require,module,exports) {
 "use strict";
@@ -29876,10 +29876,12 @@ function QuizsComponents({
   number
 }) {
   //Return this component when the quiz is opened
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper"
   }, /*#__PURE__*/_react.default.createElement("img", {
@@ -29940,7 +29942,7 @@ function QuizsComponents({
   }, " ", randomOptions[3])))), /*#__PURE__*/_react.default.createElement("div", null, nextButton && /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: checkWin
-  }, "Next"))));
+  }, "Next")))));
 }
 
 var _default = QuizsComponents;
@@ -29983,11 +29985,7 @@ function Result({
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-main"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: _undraw_adventure.default,
-    alt: "winner of the world",
-    className: "headerImg"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "main-wrapper"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_winners.default
@@ -30088,23 +30086,27 @@ function Country() {
     }
   }
 
-  function checkWin() {
+  function checkWin(e) {
     setNumber(Math.floor(Math.random() * 3));
 
     if (showAnswer) {
       getRandomCountry();
       setNextButton(false);
+      setUserIsWin(false);
       setScore(prevScore => prevScore + 1);
       rightAnswer.current.style.backgroundColor = "#ffffff";
       rightAnswer.current.style.borderColor = "#6066D0";
       e.currentTarget.style.backgroundColor = "#EA8282";
+      rightAnswer.current.classList.remove("tickTrue");
     } else if (!showAnswer) {
       setUserIsWin(true);
     }
   } //return this component to run or state
 
 
-  return /*#__PURE__*/_react.default.createElement("div", null, IsStart ? /*#__PURE__*/_react.default.createElement("div", null, userIsWin ? /*#__PURE__*/_react.default.createElement(_Result.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, IsStart ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, userIsWin ? /*#__PURE__*/_react.default.createElement(_Result.default, {
     score: score,
     setUserIsWin: setUserIsWin,
     randomCountry: randomCountry,
@@ -30145,7 +30147,7 @@ var _App = _interopRequireDefault(require("./Components/App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30173,7 +30175,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50266" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55113" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30349,5 +30351,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/country-quiz.e31bb0bc.js.map
