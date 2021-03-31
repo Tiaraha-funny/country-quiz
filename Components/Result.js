@@ -1,6 +1,5 @@
 import React from "react";
 import winSvg from "./images/undraw_winners.svg";
-import adventure from "./images/undraw_adventure.svg";
 
 function Result({
   score,

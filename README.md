@@ -1,22 +1,20 @@
 # Country Quiz
 
-## **Structure**
+## Design
+You can see the design [here](https://country-quiz-petah.netlify.app/)
 
--  You can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
--  You can see select an answer in the buttons
--   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appers if it is wrong or change another question if the answer is correct. 
--   When you answer correctly, you can move on to the next question
--   When you answer incorrectly, you can see your results and try again
--   You can try again
+## Demo 
+[Country quiz app](https://github.com/Tiaraha-funny/country-quiz)
+
 
 **Live app with netlify** : https://country-quiz-petah.netlify.app/
 
 
-## **Screenshot**
+## **Feature**
 
 1- The first quiz 
 
-![fresh-quiz](./fresh-quiz.png)
+![fresh-quiz](./country-quiz.png)
 
 2- When your answer is correct
 
@@ -24,33 +22,35 @@
 
 3- When your answer is wrong
 
-![wrong-answer](./incorrect-answer.png)
+![wrong-answer](./wrong-answer.png)
 
-4- To get another try for the quiz and see the result
+4- See the result get another try
 
 ![try-again](./result.png)
 
-## **My Experience**
+## **Structure**
 
-I didn't have a lot of experience
+In this project, I create a country quiz application with pure react. This app shows us which several countries whith flag and how the peopleof the country called.
 
-## What I learned and improved
+- You can start the quiz by clicking a start button.
+-  You can see at least 3 types of question: a city is the capital of..., a flag belong to country... and are people from... 
+-  You can see select an answer in the buttons
+-   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appers if it is wrong or change another question if the answer is correct. 
+-   When you answer correctly, you can move on to the next question
+-   When you answer incorrectly, you can see your results and try again
+-   You can try again
 
-There are many things that I learned from this project, such as using class react and react hooks at the same time. I tried to use router and link method at first but it seemed didn't work because I need a very clear path. I improved a lot on using state and fetch in class, instead of using useEffect we can use componentDidMount with async.
 
-Lately, I changed my code class component into react hooks. I found it very hard. Because the improvement, I manage to do it.
+## **What I learned and improved**
 
-### Built With
+There were many things that I learned from this project, such as using useState and randoming questions. I tried to use router and link method at first but it seemed didn't work because I needed a very clear path. I improved a lot on fetching an API by using useEffect and async promise.
 
--   [React](https://reactjs.org/)
+### **Built With**
 
-## Features
+ [React](https://reactjs.org/), css and html - no framework
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+## **How To Use**
 
-## How To Use
-
-<!-- Example: -->
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -62,11 +62,9 @@ $ git clone https://github.com/your-user-name/your-project-name
 $ npm install
 
 # Run the app
-$ npm start
+$ parcel index.html
 ```
 
 ## Contact
 
--   Website [my-website.com](https://country-quiz-petah.netlify.app/)
--   GitHub [@mygithub-account](https://github.com/Tiaraha-funny)
 -   Email [@my-email-adress](mailto:peta.jea@onja.org)

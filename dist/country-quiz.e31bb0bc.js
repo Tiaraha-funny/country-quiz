@@ -29854,15 +29854,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _undraw_adventure = _interopRequireDefault(require("./images/undraw_adventure.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 //import all the component needed
 //I destructure the variables needed instead of propping it by using props
@@ -29947,8 +29943,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _undraw_winners = _interopRequireDefault(require("./images/undraw_winners.svg"));
 
-var _undraw_adventure = _interopRequireDefault(require("./images/undraw_adventure.svg"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Result({
@@ -29984,7 +29978,7 @@ function Result({
 
 var _default = Result;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./images/undraw_winners.svg":"Components/images/undraw_winners.svg","./images/undraw_adventure.svg":"Components/images/undraw_adventure.svg"}],"Components/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./images/undraw_winners.svg":"Components/images/undraw_winners.svg"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
