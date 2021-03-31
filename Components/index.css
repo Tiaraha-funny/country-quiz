@@ -39,12 +39,11 @@ h1 {
 
 h3 {
     font-size: 24px;
-    color: #2F527B;
+    color: #1D355D;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
+img {
+    max-width: 100%;
 }
 
 .headerImg {
@@ -55,29 +54,6 @@ h3 {
 
 .content {
     clear: both;
-}
-
-.btn-wrapper {
-    display: grid;
-    grid-gap: 20px;
-}
-
-.wrongAnswer, .rightAnswer {
-    border: 2px solid rgba(96, 102, 208, 0.7);
-    background-color: #ffffff;
-    box-sizing: border-box;
-    border-radius: 12px;
-    color: #6066D0;
-}
-
-.rightAnswer:hover, .wrongAnswer:hover {
-    background-color: #F9A826;
-    color: #6066d0cc;
-    color: white;
-}
-
-.flages {
-    max-width: 100%;
 }
 
 q {
@@ -91,17 +67,16 @@ q {
 
 .images {
     width: 30%;
+    filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
 }
 
 
 .main {
-    max-width: 464px;
     max-height: 629px;
-    margin: auto;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 24px;
-    margin-bottom: 100px;
+    padding-block-end: 90px;
 }
 
 .main-wrapper > div {
@@ -109,7 +84,7 @@ q {
 }
 
 .main-wrapper h2 {
-    font-size: 48px;
+font-size: 48px;
 line-height: 72px;
 color: #1D355D;
 margin: 0;
@@ -124,36 +99,23 @@ margin: 0;
 }
 
 .headings {
-    text-align: center;
     color: #ffffff;
     text-transform: uppercase;
-    margin-left: -10%;
     overflow-wrap: break-word;
-    margin-bottom: 40px;
     margin-right: 80px;
     padding-top: 40px;
 }
 
-.btnContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    width: 98%;
-    padding-left: 0px;
-    margin: 0;
-    margin-right: 0;
-    border-radius: 10px;
-    font-size: 18px;
-}
-
 .name {
     width: inherit;
+    font-size: 18px;
+    text-align: left;
 }
 
 .item {
     margin-left: 15px;
+    font-size: 24px;
+    margin-inline-end: 15%;
 }
 
 .next {
@@ -163,7 +125,7 @@ margin: 0;
     margin-right: 0;
     border-radius: 12px;
     margin-left: 70%;
-    margin-top: 20px;
+    /* margin-top: 33px; */
     border: 1px solid transparent;
     outline: none;
     font-size: 20px;
@@ -213,6 +175,7 @@ margin: 0;
     margin: auto;
     width: 50%;
     text-align: center;
+    padding-block-start: 15%;
   }
 
   .startQuiz {
@@ -239,16 +202,81 @@ margin: 0;
     color: #ffffff;
   }
 
+  .container > * {
+    max-width: 464px;
+    margin: auto;
+    text-align: inherit;
+  }
+
+  .container {
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+  }
+
   .right-answer {
     background-image: url(../Components/images/tickTrue.svg);
     background-repeat: no-repeat;
-    background-position: right;
-    background-color: blue;
+    background-position: 95%, 42%;
+    background-color: #60BF88;
+    background-size: 28px;
+    color: #ffffff;
     }
 
-  .wrong-answer {
+    .wrong-answer {
     background-image: url(../Components/images/tickFalse.svg);
     background-repeat: no-repeat;
-    background-position: right;
-    background-color: red;
+    background-position: 95%, 42%;
+    background-color: #EA8282;
+    background-size: 28px;
+    color: #ffffff;
   }
+
+
+.btn-wrapper {
+    display: grid;
+    grid-gap: 20px;
+    padding-block-end: 35px;
+}
+
+ button {
+    background-color: #ffffff;
+    color: #6066D0;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 2px solid #bec1fcb3;
+    outline: #6066D0;
+}
+
+.btn-wrapper button {
+    height: 65px;
+    width: 96%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    padding-left: 0px;
+    margin: 0;
+    margin-right: 0;
+    border-radius: 10px;
+}
+
+.btn-wrapper button:hover:not(.wrong-answer, .right-answer, .next) {
+    background-color: #F9A826;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .headings {
+        margin-bottom: 100px;
+    }
+
+    .container > div > .headings {
+        margin-bottom: 0;
+    }
+
+    #root {
+        padding-block-end: 70%;
+    }
+}

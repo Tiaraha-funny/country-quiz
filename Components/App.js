@@ -18,6 +18,7 @@ function Country() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [IsStart, setIsStart] = useState(false);
   const [number, setNumber] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const rightAnswer = useRef(null);
 
@@ -33,6 +34,7 @@ function Country() {
 
   useEffect(() => {
     fetchCountriesFromApi();
+    setLoading(false)
   }, []);
 
   function getRandomCountry() {
@@ -111,7 +113,9 @@ function Country() {
               setNextButton={setNextButton}
             />
           ) : (
-            <QuizComponents
+            <>{loading 
+              ? <h3>Loading...</h3> 
+              : <QuizComponents
               randomCountry={randomCountry}
               randomOptions={randomOptions}
               nextButton={nextButton}
@@ -120,7 +124,8 @@ function Country() {
               rightAnswer={rightAnswer}
               number={number}
               countries={countries}
-            />
+              />
+            }</>
           )}
         </div>
       ) : (

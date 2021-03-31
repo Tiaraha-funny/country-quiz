@@ -29881,8 +29881,6 @@ function QuizComponents({
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_adventure.default,
@@ -29893,49 +29891,41 @@ function QuizComponents({
   }, number === 0 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "images"
-  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 2 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from "))), /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 2 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from ")), /*#__PURE__*/_react.default.createElement("div", {
     className: "btn-wrapper"
   }, /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[0],
     onClick: handleClick,
     ref: randomOptions[0] === randomCountry.name ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
-  }, "A-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "A"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[0]))), /*#__PURE__*/_react.default.createElement("button", {
+  }, " ", randomOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[1],
     onClick: handleClick,
     ref: randomOptions[1] === randomCountry.name ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
-  }, "B-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "B"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[1]))), /*#__PURE__*/_react.default.createElement("button", {
+  }, " ", randomOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[2],
     onClick: handleClick,
     ref: randomOptions[2] === randomCountry.name ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
-  }, "C-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "C"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, randomOptions[2], " "))), /*#__PURE__*/_react.default.createElement("button", {
+  }, randomOptions[2], " ")), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[3],
     onClick: handleClick,
     ref: randomOptions[3] === randomCountry.name ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "btnContent"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
-  }, "D-"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "D"), /*#__PURE__*/_react.default.createElement("div", {
     className: "name"
-  }, " ", randomOptions[3])))), /*#__PURE__*/_react.default.createElement("div", null, nextButton && /*#__PURE__*/_react.default.createElement("button", {
+  }, " ", randomOptions[3]))), /*#__PURE__*/_react.default.createElement("div", null, nextButton && /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: checkWin
   }, "Next")))));
@@ -30030,6 +30020,7 @@ function Country() {
   const [showAnswer, setShowAnswer] = (0, _react.useState)(false);
   const [IsStart, setIsStart] = (0, _react.useState)(false);
   const [number, setNumber] = (0, _react.useState)(0);
+  const [loading, setLoading] = (0, _react.useState)(true);
   const rightAnswer = (0, _react.useRef)(null); //We use useEffect in hooks to fecth the data by creating this async function
 
   const fetchCountriesFromApi = async () => {
@@ -30041,6 +30032,7 @@ function Country() {
 
   (0, _react.useEffect)(() => {
     fetchCountriesFromApi();
+    setLoading(false);
   }, []);
 
   function getRandomCountry() {
@@ -30098,7 +30090,7 @@ function Country() {
     getRandomCountry: getRandomCountry,
     setScore: setScore,
     setNextButton: setNextButton
-  }) : /*#__PURE__*/_react.default.createElement(_QuizComponents.default, {
+  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading ? /*#__PURE__*/_react.default.createElement("h3", null, "Loading...") : /*#__PURE__*/_react.default.createElement(_QuizComponents.default, {
     randomCountry: randomCountry,
     randomOptions: randomOptions,
     nextButton: nextButton,
@@ -30107,7 +30099,7 @@ function Country() {
     rightAnswer: rightAnswer,
     number: number,
     countries: countries
-  })) : /*#__PURE__*/_react.default.createElement("div", {
+  }))) : /*#__PURE__*/_react.default.createElement("div", {
     className: "startBtn"
   }, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings__start"
@@ -30159,7 +30151,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49811" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50195" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

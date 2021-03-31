@@ -23,7 +23,6 @@ function QuizComponents({
         <h1>Country Quiz</h1>
       </header>
       <div className="main">
-        <div className="container">
         <div className="wrapper">
           <img
             src={adventure}
@@ -42,63 +41,54 @@ function QuizComponents({
             )}
             {number === 2 && <h3>{randomCountry.demonym} are people from </h3>}
           </div>
-        </div>
 
-        <div className="btn-wrapper">
-          <button
-            value={randomOptions[0]}
-            onClick={handleClick}
-            ref={randomOptions[0] === randomCountry.name ? rightAnswer : null}
-          >
-            <div className="btnContent">
-              <div className="item">A-</div>
+          <div className="btn-wrapper">
+            <button
+              value={randomOptions[0]}
+              onClick={handleClick}
+              ref={randomOptions[0] === randomCountry.name ? rightAnswer : null}
+            >
+              <div className="item">A</div>
               <div className="name"> {randomOptions[0]}</div>
-            </div>
-          </button>
-
-          <button
-            value={randomOptions[1]}
-            onClick={handleClick}
-            ref={randomOptions[1] === randomCountry.name ? rightAnswer : null}
-          >
-            <div className="btnContent">
-              <div className="item">B-</div>
-              <div className="name"> {randomOptions[1]}</div>
-            </div>
-          </button>
-
-          <button
-            value={randomOptions[2]}
-            onClick={handleClick}
-            ref={randomOptions[2] === randomCountry.name ? rightAnswer : null}
-          >
-            <div className="btnContent">
-              <div className="item">C-</div>
-              <div className="name">{randomOptions[2]} </div>
-            </div>
-          </button>
-
-          <button
-            value={randomOptions[3]}
-            onClick={handleClick}
-            ref={randomOptions[3] === randomCountry.name ? rightAnswer : null}
-          >
-            <div className="btnContent">
-              <div className="item">D-</div>
-              <div className="name"> {randomOptions[3]}</div>
-            </div>
-          </button>
-        </div>
-        <div>
-          {nextButton && (
-            <button className="next" onClick={checkWin}>
-              Next
             </button>
-          )}
+
+            <button
+              value={randomOptions[1]}
+              onClick={handleClick}
+              ref={randomOptions[1] === randomCountry.name ? rightAnswer : null}
+            >
+              <div className="item">B</div>
+              <div className="name"> {randomOptions[1]}</div>
+            </button>
+
+            <button
+              value={randomOptions[2]}
+              onClick={handleClick}
+              ref={randomOptions[2] === randomCountry.name ? rightAnswer : null}
+            >
+              <div className="item">C</div>
+              <div className="name">{randomOptions[2]} </div>
+            </button>
+
+            <button
+              value={randomOptions[3]}
+              onClick={handleClick}
+              ref={randomOptions[3] === randomCountry.name ? rightAnswer : null}
+            >
+              <div className="item">D</div>
+              <div className="name"> {randomOptions[3]}</div>
+            </button>
+          </div>
+          <div>
+            {nextButton && (
+              <button className="next" onClick={checkWin}>
+                Next
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 }
 
