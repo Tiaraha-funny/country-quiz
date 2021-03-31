@@ -20,28 +20,27 @@ You can see the design [here](https://country-quiz-petah.netlify.app/)
 
 ![wrong-answer](./wrong-answer.png)
 
-4- See the result get another try
+4- See the result and get another try
 
 ![try-again](./result.png)
 
 ## **Structure**
 
-In this project, I create a country quiz application with pure react. This app shows us which several countries whith flag and how the peopleof the country called.
+In this project, I create a country quiz application with pure react. This app shows us several countries whith flag and how the people of the country called.
 
 - You can start the quiz by clicking a start button.
--  You can see at least 3 types of question: a city is the capital of..., a flag belong to country... and are people from... 
+-  You can see 3 types of question: ...is the capital of..., ...this flag belongs to... and ...are people from... 
 -  You can see select an answer in the buttons
--   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appers if it is wrong or change another question if the answer is correct. 
+-   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appears if it is wrong or change another question if the answer is correct. 
 -   When you answer correctly, you can move on to the next question
--   When you answer incorrectly, you can see your results and try again
--   You can try again
+-   When you answer incorrectly, you can see your results and can try again
 
 
-## **What I learned and improved**
+## **What I Learned And Improved**
 
-There were many things that I learned from this project, such as using useState and randoming questions. I tried to use router and link method at first but it seemed didn't work because I needed a very clear path. I improved a lot on fetching an API by using useEffect and async promise.
+There were many things that I learned from this project, such as using useState and randoming questions. I tried to use router and link method at first but it seemed didn't work because I needed a very clear path. Also, I improved a lot on fetching an API by using useEffect and async promise.
 
-### **Built With**
+### **This Project Is Built With**
 
  [React](https://reactjs.org/), css and html - no framework
 
