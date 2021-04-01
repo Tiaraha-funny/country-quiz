@@ -50,6 +50,7 @@ img {
     float: right;
     margin-top: -100px;
     padding-bottom: 30px;
+    margin-inline-end: -20px;
 }
 
 .content {
@@ -124,8 +125,7 @@ margin: 0;
     background-color:  #F9A826;
     margin-right: 0;
     border-radius: 12px;
-    margin-left: 70%;
-    /* margin-top: 33px; */
+    margin-left: 65%;
     border: 1px solid transparent;
     outline: none;
     font-size: 20px;
@@ -220,6 +220,7 @@ margin: 0;
     background-color: #60BF88;
     background-size: 28px;
     color: #ffffff;
+    border: none;
     }
 
     .wrong-answer {
@@ -229,6 +230,7 @@ margin: 0;
     background-color: #EA8282;
     background-size: 28px;
     color: #ffffff;
+    border: none;
   }
 
 

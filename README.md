@@ -6,7 +6,7 @@ You can see the design [here](https://country-quiz-petah.netlify.app/)
 ## Demo 
 [Country quiz app](https://github.com/Tiaraha-funny/country-quiz)
 
-## **Feature**
+## **Features**
 
 1- The first quiz 
 
