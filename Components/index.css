@@ -18,10 +18,10 @@ body {
     margin: 0;
     background-image: url(./images/background.png);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     height: 100vh;
     overflow-wrap: break-word;
-    padding-bottom: 25%;
+    padding-bottom: 30%;
 }
 
 button {
@@ -283,6 +283,13 @@ margin: 0;
     }
 
     #root {
-        padding-block-end: 70%;
+        background-size: cover;
+    }
+}
+
+@media (min-width: 1440px) {
+    #root {
+        padding-bottom: 0;
+        background-size: cover;
     }
 }
