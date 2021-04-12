@@ -285,6 +285,10 @@ margin: 0;
     #root {
         background-size: cover;
     }
+
+    .container {
+        margin: 0;
+    }
 }
 
 @media (min-width: 1440px) {
