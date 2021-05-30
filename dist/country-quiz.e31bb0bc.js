@@ -29772,7 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29799,12 +29799,12 @@ function getBundleURL() {
 }
 
 function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
 }
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -29839,12 +29839,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"Components/index.css":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"Components/index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./Fonts\\Poppins-Bold.woff2":[["Poppins-Bold.f596b36d.woff2","Components/Fonts/Poppins-Bold.woff2"],"Components/Fonts/Poppins-Bold.woff2"],"./Fonts\\Poppins-Bold.woff":[["Poppins-Bold.3baa3280.woff","Components/Fonts/Poppins-Bold.woff"],"Components/Fonts/Poppins-Bold.woff"],"./images\\background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"./images\\tickTrue.svg":[["tickTrue.e9a80e85.svg","Components/images/tickTrue.svg"],"Components/images/tickTrue.svg"],"./images\\tickFalse.svg":[["tickFalse.ae695268.svg","Components/images/tickFalse.svg"],"Components/images/tickFalse.svg"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
+},{"./Fonts/Poppins-Bold.woff2":[["Poppins-Bold.f596b36d.woff2","Components/Fonts/Poppins-Bold.woff2"],"Components/Fonts/Poppins-Bold.woff2"],"./Fonts/Poppins-Bold.woff":[["Poppins-Bold.3baa3280.woff","Components/Fonts/Poppins-Bold.woff"],"Components/Fonts/Poppins-Bold.woff"],"./images/background.png":[["background.21ad55ca.png","Components/images/background.png"],"Components/images/background.png"],"./images/tickTrue.svg":[["tickTrue.e9a80e85.svg","Components/images/tickTrue.svg"],"Components/images/tickTrue.svg"],"./images/tickFalse.svg":[["tickFalse.ae695268.svg","Components/images/tickFalse.svg"],"Components/images/tickFalse.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"Components/images/undraw_adventure.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure.29f13e88.svg";
 },{}],"Components/QuizComponents.js":[function(require,module,exports) {
 "use strict";
@@ -29884,10 +29884,10 @@ function QuizComponents({
     className: "headerImg"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, number === 0 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from "), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "images"
-  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 2 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from ")), /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "btn-wrapper"
   }, /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[0],
@@ -29996,9 +29996,9 @@ var _Result = _interopRequireDefault(require("./Result"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 //importing the display file to show it in the state
 //I used class here so that it won't be tough for me to handle the if statement
@@ -30117,7 +30117,7 @@ var _App = _interopRequireDefault(require("./Components/App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30145,7 +30145,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34675" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30321,5 +30321,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/country-quiz.e31bb0bc.js.map

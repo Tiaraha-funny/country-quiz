@@ -1,14 +1,16 @@
 # Country Quiz
 
 ## Design
+
 You can see the design [here](https://country-quiz-petah.netlify.app/)
 
-## Demo 
+## Demo
+
 [Country quiz app](https://github.com/Tiaraha-funny/country-quiz)
 
 ## **Features**
 
-1- The first quiz 
+1- The first quiz
 
 ![fresh-quiz](./country-quiz.png)
 
@@ -29,12 +31,11 @@ You can see the design [here](https://country-quiz-petah.netlify.app/)
 In this project, I create a country quiz application with pure react. This app shows us several countries whith flag and how the people of the country called.
 
 - You can start the quiz by clicking a start button.
--  You can see 3 types of question: ...is the capital of..., ...this flag belongs to... and ...are people from... 
--  You can see select an answer in the buttons
--   You can see if your answer is correct or incorrect by getting green background or red background and also the next button appears if it is wrong or change another question if the answer is correct. 
--   When you answer correctly, you can move on to the next question
--   When you answer incorrectly, you can see your results and can try again
-
+- You can see 3 types of question: ...is the capital of..., ...this flag belongs to... and ...are people from...
+- You can see select an answer in the buttons
+- You can see if your answer is correct or incorrect by getting green background or red background and also the next button appears if it is wrong or change another question if the answer is correct.
+- When you answer correctly, you can move on to the next question
+- When you answer incorrectly, you can see your results and can try again
 
 ## **What I Learned And Improved**
 
@@ -42,24 +43,23 @@ There were many things that I learned from this project, such as using useState 
 
 ### **This Project Is Built With**
 
- [React](https://reactjs.org/), css and html - no framework
+[React](https://reactjs.org/), css and html - no framework
 
 ## **How To Use**
-
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/Tiaraha-funny/country-quiz.git
 
 # Install dependencies
 $ npm install
 
 # Run the app
-$ parcel index.html
+$ npm start or open http://localhost:1234
 ```
 
 ## Contact
 
--   Email [@my-email-adress](mailto:peta.jea@onja.org)
+- Email [@my-email-adress](mailto:peta.jea@onja.org)
