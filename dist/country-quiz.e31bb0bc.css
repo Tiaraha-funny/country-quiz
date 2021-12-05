@@ -1,0 +1,278 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Poppins-Bold.f596b36d.woff2') format('woff2'),
+    url('/Poppins-Bold.3baa3280.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  box-sizing: border-box;
+  background-image: url('/background.21ad55ca.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  font-family: 'Poppins';
+}
+
+.startBtn {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h1 {
+  color: #f2f2f2;
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+  color: #1d355d;
+}
+
+img {
+  max-width: 100%;
+}
+
+.headerImg {
+  float: right;
+  margin-top: -100px;
+  padding-bottom: 30px;
+  margin-inline-end: -13px;
+}
+
+.content {
+  clear: both;
+}
+
+q {
+  color: greenyellow;
+  font-size: 35px;
+}
+
+.content p {
+  font-size: 30px;
+}
+
+.images {
+  width: 84px;
+  filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+  height: 54px;
+}
+
+.main {
+  max-height: 629px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding-block-end: 40px;
+}
+
+.main-wrapper > div {
+  margin-bottom: 80px;
+}
+
+.main-wrapper h2 {
+  font-size: 48px;
+  line-height: 72px;
+  color: #1d355d;
+  margin: 0;
+}
+
+.main-wrapper p {
+  font-size: 18px;
+  font-weight: 200;
+  color: #1d355d;
+  margin: 0;
+}
+
+.headings {
+  color: #ffffff;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  margin-right: 80px;
+  padding-top: 40px;
+}
+
+.headings > h1 {
+  margin-block-end: 8px;
+}
+
+.name {
+  width: inherit;
+  font-size: 18px;
+  text-align: left;
+}
+
+.item {
+  margin-left: 15px;
+  font-size: 24px;
+  margin-inline-end: 15%;
+}
+
+.next {
+  padding: 16px;
+  width: 30%;
+  margin-block-start: 35px;
+  background-color: #f9a826;
+  margin-right: 0;
+  border-radius: 12px;
+  margin-left: 65%;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.modal-main {
+  background-color: white;
+  max-width: 464px;
+  height: 542px;
+  padding-bottom: 30px;
+  margin: auto;
+  border-radius: 24px;
+}
+
+.modal-main div {
+  text-align: center;
+  line-height: 40px;
+  padding-top: 20px;
+}
+
+.tryAgainBtn {
+  padding: 15px;
+  width: 40%;
+  border: 2px solid #1d355d;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1d355d;
+  margin-top: 70px;
+}
+
+.tryAgainBtn:hover {
+  background-color: #f9a826;
+  color: #ffffff;
+}
+
+.score {
+  color: #51e47d;
+  font-size: 35px;
+}
+
+.startQuiz {
+  padding: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  color: #6066d0;
+  font-size: 18px;
+  width: 50%;
+}
+
+.headings__start {
+  text-align: center;
+  color: #ffffff;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  padding-top: 40px;
+}
+
+.startQuiz:hover {
+  background-color: #f9a826;
+  color: #ffffff;
+}
+
+.container > * {
+  max-width: 464px;
+  margin: auto;
+  text-align: inherit;
+}
+
+.right-answer {
+  background-image: url(/tickTrue.e9a80e85.svg);
+  background-repeat: no-repeat;
+  background-position: 95%, 42%;
+  background-color: #60bf88;
+  background-size: 28px;
+  color: #ffffff;
+  border: none;
+}
+
+.wrong-answer {
+  background-image: url(/tickFalse.ae695268.svg);
+  background-repeat: no-repeat;
+  background-position: 95%, 42%;
+  background-color: #ea8282;
+  background-size: 28px;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-wrapper {
+  display: grid;
+  grid-gap: 20px;
+}
+
+button {
+  background-color: #ffffff;
+  color: #6066d0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 2px solid #bec1fcb3;
+  outline: #6066d0;
+}
+
+.btn-wrapper button {
+  height: 65px;
+  width: 96%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  padding-left: 0px;
+  margin: 0;
+  margin-right: 0;
+  border-radius: 10px;
+}
+
+.btn-wrapper button:hover:not(.wrong-answer, .right-answer, .next) {
+  background-color: #f9a826;
+  color: white;
+}
+
+.wrapper {
+  margin-inline-start: 32px;
+  margin-inline-end: 15px;
+}
+
+@media (max-width: 500px) {
+  .headings {
+    margin-bottom: 100px;
+  }
+
+  .container > div > .headings {
+    margin-bottom: 0;
+  }
+
+  .container {
+    margin: 0;
+  }
+}
+
+
+/*# sourceMappingURL=/country-quiz.e31bb0bc.css.map */

@@ -1,110 +1,65 @@
 # Country Quiz
 
-Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:
+## Design
 
-![image](./assets/quiz1.png)
-![image](./assets/quiz2.png)
-![image](./assets/quiz3.png)
-![image](./assets/quiz4.png)
+You can see the design [here](https://country-quiz-petah.netlify.app/)
 
--   User story: I can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
--   User story: I can see select an answer
--   User story: I can see if my answer is correct or incorrect
--   User story: When I answer correctly, I can move on to the next question
--   User story: When I answer incorrectly, I can see my results and try again
--   User story: I can try again
+## Demo
 
-**Icon**: https://google.github.io/material-design-icons/
+[Country quiz app](https://github.com/Tiaraha-funny/country-quiz)
 
-**API**: https://restcountries.eu/. Use data from the API to create questions and answers.
+## **Features**
 
-**Design** : https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1
+1- The first quiz
 
-**Live app** : https://country-quiz-app.netlify.app/
+![fresh-quiz](./country-quiz.png)
 
-As long as you fulfill all the user stories, you can give your personal touches by adding transition, using your own images, changing colors, or even creating your own layout,...
+2- When your answer is correct
 
-Once you completed, submit your solutions by providing URLs for both GitHub repository and live app on Netlify and explain briefly what you have done.
+![correct-answer](./right-answer.png)
 
-For the custom domain url you'll enter in netlify, please use the following naming convention : **country-quiz-_YOUR_FIRSTNAME_.netlify.app** (replace YOUR_FIRSTNAME by your firstname)
+3- When your answer is wrong
 
-Good luck everybody!
+![wrong-answer](./wrong-answer.png)
 
-Template for your readme :
+4- See the result and get another try
 
-<!-- Please update value in the {}  -->
+![try-again](./result.png)
 
-<h1 align="center">{Your project name}</h1>
+## **Structure**
 
-<div align="center">
-  <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
-    </a>
-  </h3>
-</div>
+In this project, I create a country quiz application with pure react. This app shows us several countries whith flag and how the people of the country called.
 
-<!-- TABLE OF CONTENTS -->
+- You can start the quiz by clicking a start button.
+- You can see 3 types of question: ...is the capital of..., ...this flag belongs to... and ...are people from...
+- You can see select an answer in the buttons
+- You can see if your answer is correct or incorrect by getting green background or red background and also the next button appears if it is wrong or change another question if the answer is correct.
+- When you answer correctly, you can move on to the next question
+- When you answer incorrectly, you can see your results and can try again
 
-## Table of Contents
+## **What I Learned And Improved**
 
--   [Overview](#overview)
-    -   [Built With](#built-with)
--   [Features](#features)
--   [How to use](#how-to-use)
--   [Contact](#contact)
--   [Acknowledgements](#acknowledgements)
+There were many things that I learned from this project, such as using useState and randoming questions. I tried to use router and link method at first but it seemed didn't work because I needed a very clear path. Also, I improved a lot on fetching an API by using useEffect and async promise.
 
-<!-- OVERVIEW -->
+### **This Project Is Built With**
 
-## Overview
+[React](https://reactjs.org/), css and html - no framework
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
-
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
--   Where can I see your demo?
--   What was your experience?
--   What have you learned/improved?
--   Your wisdom? :)
-
-### Built With
-
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
--   [React](https://reactjs.org/)
-
-## Features
-
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-## How To Use
-
-<!-- Example: -->
+## **How To Use**
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/Tiaraha-funny/country-quiz.git
 
 # Install dependencies
 $ npm install
 
 # Run the app
-$ npm start
+$ npm start or open http://localhost:1234
 ```
-
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
 
 ## Contact
 
--   Website [your-website.com](https://{your-web-site-link})
--   GitHub [@your-username](https://{github.com/your-usermame})
--   Twitter [@your-twitter](https://{twitter.com/your-username})
+- Email [@my-email-adress](mailto:peta.jea@onja.org)
