@@ -30001,7 +30001,8 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 //importing the display file to show it in the state
-//I used class here so that it won't be tough for me to handle the if statement
+const API_URL = 'https://restcountries.com/v3.1/all'; //I used class here so that it won't be tough for me to handle the if statement
+
 function Country() {
   //these are the states that we are going to access in the browser
   const [countries, setCountries] = (0, _react.useState)([]);
@@ -30018,7 +30019,7 @@ function Country() {
   const rightAnswer = (0, _react.useRef)(null); //We use useEffect in hooks to fecth the data by creating this async function
 
   const fetchCountriesFromApi = async () => {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch(API_URL);
     const countryData = await response.json();
     setCountries(countryData);
   }; //run the fetch countries at once and random it after the button is clicked
@@ -30026,18 +30027,19 @@ function Country() {
 
   (0, _react.useEffect)(() => {
     fetchCountriesFromApi();
-    setLoading(false);
   }, []);
 
   function getRandomCountry() {
+    var _randomName$name, _randomFirstOption$na, _randomSecondOption$n, _randomThirdOption$na;
+
     setIsStart(true);
-    if (countries.length == 0) return null;
+    if (countries.length === 0) return null;
     const randomName = countries[Math.floor(Math.random() * countries.length)];
     const randomFirstOption = countries[Math.floor(Math.random() * countries.length)];
     const randomSecondOption = countries[Math.floor(Math.random() * countries.length)];
     const randomThirdOption = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
 
-    const randomOptions = [randomName.name, randomFirstOption.name, randomSecondOption.name, randomThirdOption.name];
+    const randomOptions = [(_randomName$name = randomName.name) === null || _randomName$name === void 0 ? void 0 : _randomName$name.common, (_randomFirstOption$na = randomFirstOption.name) === null || _randomFirstOption$na === void 0 ? void 0 : _randomFirstOption$na.common, (_randomSecondOption$n = randomSecondOption.name) === null || _randomSecondOption$n === void 0 ? void 0 : _randomSecondOption$n.common, (_randomThirdOption$na = randomThirdOption.name) === null || _randomThirdOption$na === void 0 ? void 0 : _randomThirdOption$na.common];
     randomOptions.sort(() => {
       return 0.5 - Math.random();
     }); //Set these random in place that need them to be set
@@ -30047,12 +30049,16 @@ function Country() {
   }
 
   function handleClick(e) {
-    if (e.currentTarget.value === randomCountry.name && !nextButton) {
+    console.log('event', e.currentTarget.value);
+    console.log(randomCountry === null || randomCountry === void 0 ? void 0 : randomCountry.name.common);
+
+    if (e.currentTarget.value === randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
       setNextButton(true);
       e.currentTarget.classList.add("right-answer");
       setShowAnswer(true);
-    } else if (e.currentTarget.value !== randomCountry.name && !nextButton) {
+    } else if (e.currentTarget.value !== randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
       e.currentTarget.classList.add("wrong-answer");
+      console.log(rightAnswer.current);
       rightAnswer.current.classList.add("right-answer");
       setNextButton(true);
       setShowAnswer(false);
@@ -30084,7 +30090,7 @@ function Country() {
     getRandomCountry: getRandomCountry,
     setScore: setScore,
     setNextButton: setNextButton
-  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading ? /*#__PURE__*/_react.default.createElement("h3", null, "Loading...") : /*#__PURE__*/_react.default.createElement(_QuizComponents.default, {
+  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, !countries.length === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, "Loading...") : /*#__PURE__*/_react.default.createElement(_QuizComponents.default, {
     randomCountry: randomCountry,
     randomOptions: randomOptions,
     nextButton: nextButton,
@@ -30145,7 +30151,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44539" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

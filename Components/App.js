@@ -5,6 +5,8 @@ import "./index.css";
 import QuizComponents from "./QuizComponents";
 import Result from "./Result";
 
+const API_URL = 'https://restcountries.com/v3.1/all'
+
 //I used class here so that it won't be tough for me to handle the if statement
 
 function Country() {
@@ -25,7 +27,7 @@ function Country() {
   //We use useEffect in hooks to fecth the data by creating this async function
 
   const fetchCountriesFromApi = async () => {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch(API_URL);
     const countryData = await response.json();
     setCountries(countryData);
   };
@@ -34,13 +36,12 @@ function Country() {
 
   useEffect(() => {
     fetchCountriesFromApi();
-    setLoading(false)
   }, []);
 
   function getRandomCountry() {
-    setIsStart(true);
+    setIsStart(true)
 
-    if (countries.length == 0) return null;
+    if (countries.length === 0) return null;
 
     const randomName = countries[Math.floor(Math.random() * countries.length)];
     const randomFirstOption =
@@ -53,10 +54,10 @@ function Country() {
     //To get the names from the randoms
 
     const randomOptions = [
-      randomName.name,
-      randomFirstOption.name,
-      randomSecondOption.name,
-      randomThirdOption.name,
+      randomName.name?.common,
+      randomFirstOption.name?.common,
+      randomSecondOption.name?.common,
+      randomThirdOption.name?.common,
     ];
 
     randomOptions.sort(() => {
@@ -70,13 +71,15 @@ function Country() {
   }
 
   function handleClick(e) {
-  
-    if (e.currentTarget.value === randomCountry.name && !nextButton) {
+    console.log('event', e.currentTarget.value);
+    console.log(randomCountry?.name.common);
+    if (e.currentTarget.value === randomCountry && randomCountry?.name.common && !nextButton) {
       setNextButton(true);
       e.currentTarget.classList.add("right-answer");
       setShowAnswer(true);
-    } else if (e.currentTarget.value !== randomCountry.name && !nextButton) {
+    } else if (e.currentTarget.value !== randomCountry && randomCountry?.name.common && !nextButton) {
       e.currentTarget.classList.add("wrong-answer");
+      console.log(rightAnswer.current);
       rightAnswer.current.classList.add("right-answer");
       setNextButton(true);
       setShowAnswer(false);
@@ -113,7 +116,7 @@ function Country() {
               setNextButton={setNextButton}
             />
           ) : (
-            <>{loading 
+            <>{!countries.length === 0
               ? <h3>Loading...</h3> 
               : <QuizComponents
               randomCountry={randomCountry}
