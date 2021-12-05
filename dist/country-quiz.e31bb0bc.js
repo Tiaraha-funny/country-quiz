@@ -29871,7 +29871,11 @@ function QuizComponents({
   rightAnswer,
   number
 }) {
+  var _randomCountry$name, _randomCountry$demony;
+
   //Return this component when the quiz is opened
+  let countryOption = randomCountry === null || randomCountry === void 0 ? void 0 : (_randomCountry$name = randomCountry.name) === null || _randomCountry$name === void 0 ? void 0 : _randomCountry$name.common;
+  console.log(countryOption);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
@@ -29884,7 +29888,7 @@ function QuizComponents({
     className: "headerImg"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonym, " are people from "), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the the capital of "), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry === null || randomCountry === void 0 ? void 0 : (_randomCountry$demony = randomCountry.demonyms) === null || _randomCountry$demony === void 0 ? void 0 : _randomCountry$demony.eng.f, " are people from "), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "images"
   }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?"))), /*#__PURE__*/_react.default.createElement("div", {
@@ -29892,7 +29896,7 @@ function QuizComponents({
   }, /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[0],
     onClick: handleClick,
-    ref: randomOptions[0] === randomCountry.name ? rightAnswer : null
+    ref: randomOptions[0] === countryOption ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
   }, "A"), /*#__PURE__*/_react.default.createElement("div", {
@@ -29900,7 +29904,7 @@ function QuizComponents({
   }, " ", randomOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[1],
     onClick: handleClick,
-    ref: randomOptions[1] === randomCountry.name ? rightAnswer : null
+    ref: randomOptions[1] === countryOption ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
   }, "B"), /*#__PURE__*/_react.default.createElement("div", {
@@ -29908,7 +29912,7 @@ function QuizComponents({
   }, " ", randomOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[2],
     onClick: handleClick,
-    ref: randomOptions[2] === randomCountry.name ? rightAnswer : null
+    ref: randomOptions[2] === countryOption ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
   }, "C"), /*#__PURE__*/_react.default.createElement("div", {
@@ -29916,7 +29920,7 @@ function QuizComponents({
   }, randomOptions[2], " ")), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[3],
     onClick: handleClick,
-    ref: randomOptions[3] === randomCountry.name ? rightAnswer : null
+    ref: randomOptions[3] === countryOption ? rightAnswer : null
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "item"
   }, "D"), /*#__PURE__*/_react.default.createElement("div", {
@@ -30049,12 +30053,10 @@ function Country() {
   }
 
   function handleClick(e) {
-    console.log('event', e.currentTarget.value);
-    console.log(randomCountry === null || randomCountry === void 0 ? void 0 : randomCountry.name.common);
-
     if (e.currentTarget.value === randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
       setNextButton(true);
       e.currentTarget.classList.add("right-answer");
+      rightAnswer.current.classList.add("wrong-answer");
       setShowAnswer(true);
     } else if (e.currentTarget.value !== randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
       e.currentTarget.classList.add("wrong-answer");
@@ -30151,7 +30153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44539" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35495" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

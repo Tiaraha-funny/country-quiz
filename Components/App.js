@@ -71,11 +71,10 @@ function Country() {
   }
 
   function handleClick(e) {
-    console.log('event', e.currentTarget.value);
-    console.log(randomCountry?.name.common);
     if (e.currentTarget.value === randomCountry && randomCountry?.name.common && !nextButton) {
       setNextButton(true);
       e.currentTarget.classList.add("right-answer");
+      rightAnswer.current.classList.add("wrong-answer");
       setShowAnswer(true);
     } else if (e.currentTarget.value !== randomCountry && randomCountry?.name.common && !nextButton) {
       e.currentTarget.classList.add("wrong-answer");

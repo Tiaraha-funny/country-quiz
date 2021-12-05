@@ -16,7 +16,9 @@ function QuizComponents({
   number,
 }) {
   //Return this component when the quiz is opened
-
+  let countryOption = randomCountry?.name?.common
+  console.log(countryOption);
+  
   return (
     <>
       <header className='headings'>
@@ -33,7 +35,7 @@ function QuizComponents({
             {number === 0 && (
               <h3>{randomCountry.capital} is the the capital of </h3>
             )}
-            {number === 1 && <h3>{randomCountry.demonym} are people from </h3>}
+            {number === 1 && <h3>{randomCountry?.demonyms?.eng.f} are people from </h3>}
             {number === 2 && (
               <header>
                 <img src={randomCountry.flag} className='images' />
@@ -47,7 +49,7 @@ function QuizComponents({
               value={randomOptions[0]}
               onClick={handleClick}
               ref={
-                randomOptions[0] === randomCountry.name ? rightAnswer : null
+                randomOptions[0] === countryOption ? rightAnswer : null
               }>
               <div className='item'>A</div>
               <div className='name'> {randomOptions[0]}</div>
@@ -57,7 +59,7 @@ function QuizComponents({
               value={randomOptions[1]}
               onClick={handleClick}
               ref={
-                randomOptions[1] === randomCountry.name ? rightAnswer : null
+                randomOptions[1] === countryOption ? rightAnswer : null
               }>
               <div className='item'>B</div>
               <div className='name'> {randomOptions[1]}</div>
@@ -67,7 +69,7 @@ function QuizComponents({
               value={randomOptions[2]}
               onClick={handleClick}
               ref={
-                randomOptions[2] === randomCountry.name ? rightAnswer : null
+                randomOptions[2] === countryOption ? rightAnswer : null
               }>
               <div className='item'>C</div>
               <div className='name'>{randomOptions[2]} </div>
@@ -77,7 +79,7 @@ function QuizComponents({
               value={randomOptions[3]}
               onClick={handleClick}
               ref={
-                randomOptions[3] === randomCountry.name ? rightAnswer : null
+                randomOptions[3] === countryOption ? rightAnswer : null
               }>
               <div className='item'>D</div>
               <div className='name'> {randomOptions[3]}</div>
