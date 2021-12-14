@@ -1,22 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 
-//importing the display file to show it in the state
 import QuizComponents from "./QuizComponents";
 import Result from "./Result";
 
 const API_URL = 'https://restcountries.com/v3.1/all'
 
-//I used class here so that it won't be tough for me to handle the if statement
 
 function Country() {
-  //these are the states that we are going to access in the browser
+
   const [countries, setCountries] = useState([]);
   const [randomCountry, setRandomCountry] = useState({});
   const [randomOptions, setRandomOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [nextButton, setNextButton] = useState(false);
-  const [userIsWin, setUserIsWin] = useState(false); // isResult
+  const [userIsWin, setUserIsWin] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [IsStart, setIsStart] = useState(false);
   const [number, setNumber] = useState(0);
@@ -24,7 +22,6 @@ function Country() {
 
   const rightAnswer = useRef(null);
 
-  //We use useEffect in hooks to fecth the data by creating this async function
 
   const fetchCountriesFromApi = async () => {
     const response = await fetch(API_URL);
@@ -32,7 +29,7 @@ function Country() {
     setCountries(countryData);
   };
 
-  //run the fetch countries at once and random it after the button is clicked
+
 
   useEffect(() => {
     fetchCountriesFromApi();
@@ -43,15 +40,14 @@ function Country() {
 
     if (countries.length === 0) return null;
 
-    const randomName = countries[Math.floor(Math.random() * countries.length)];
-    const randomFirstOption =
+    const randomName = countries && countries[Math.floor(Math.random() * countries.length)];
+    const randomFirstOption = countries &&
       countries[Math.floor(Math.random() * countries.length)];
-    const randomSecondOption =
+    const randomSecondOption = countries &&
       countries[Math.floor(Math.random() * countries.length)];
-    const randomThirdOption =
+    const randomThirdOption = countries &&
       countries[Math.floor(Math.random() * countries.length)];
 
-    //To get the names from the randoms
 
     const randomOptions = [
       randomName.name?.common,
@@ -64,22 +60,22 @@ function Country() {
       return 0.5 - Math.random();
     });
 
-    //Set these random in place that need them to be set
-
     setRandomCountry(randomName);
     setRandomOptions(randomOptions);
   }
 
   function handleClick(e) {
-    if (e.currentTarget.value === randomCountry && randomCountry?.name.common && !nextButton) {
+    const choice = e.target.value
+    const answer = randomCountry.name.common;
+   
+    if (choice === answer && !nextButton) {
+      e.target.classList.add("right-answer");
       setNextButton(true);
-      e.currentTarget.classList.add("right-answer");
-      rightAnswer.current.classList.add("wrong-answer");
       setShowAnswer(true);
-    } else if (e.currentTarget.value !== randomCountry && randomCountry?.name.common && !nextButton) {
-      e.currentTarget.classList.add("wrong-answer");
-      console.log(rightAnswer.current);
+    } else if (choice !== answer && !nextButton) {
       rightAnswer.current.classList.add("right-answer");
+      // console.log(e.currentTarget);
+      e.currentTarget.classList.add("wrong-answer");
       setNextButton(true);
       setShowAnswer(false);
     }
@@ -98,7 +94,7 @@ function Country() {
     }
   }
 
-  //return this component to run or state
+
 
   return (
     <>
@@ -116,16 +112,16 @@ function Country() {
             />
           ) : (
             <>{!countries.length === 0
-              ? <h3>Loading...</h3> 
+              ? <h3>Loading...</h3>
               : <QuizComponents
-              randomCountry={randomCountry}
-              randomOptions={randomOptions}
-              nextButton={nextButton}
-              checkWin={checkWin}
-              handleClick={handleClick}
-              rightAnswer={rightAnswer}
-              number={number}
-              countries={countries}
+                randomCountry={randomCountry}
+                randomOptions={randomOptions}
+                nextButton={nextButton}
+                checkWin={checkWin}
+                handleClick={handleClick}
+                rightAnswer={rightAnswer}
+                number={number}
+                countries={countries}
               />
             }</>
           )}

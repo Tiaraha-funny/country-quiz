@@ -29860,8 +29860,6 @@ var _undraw_adventure = _interopRequireDefault(require("./images/undraw_adventur
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import all the component needed
-//I destructure the variables needed instead of propping it by using props
 function QuizComponents({
   randomOptions,
   randomCountry,
@@ -29873,9 +29871,7 @@ function QuizComponents({
 }) {
   var _randomCountry$name, _randomCountry$demony;
 
-  //Return this component when the quiz is opened
-  let countryOption = randomCountry === null || randomCountry === void 0 ? void 0 : (_randomCountry$name = randomCountry.name) === null || _randomCountry$name === void 0 ? void 0 : _randomCountry$name.common;
-  console.log(countryOption);
+  const countryOption = randomCountry === null || randomCountry === void 0 ? void 0 : (_randomCountry$name = randomCountry.name) === null || _randomCountry$name === void 0 ? void 0 : _randomCountry$name.common;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
@@ -29963,7 +29959,6 @@ function Result({
     setNextButton(false);
   }
 
-  console.log(score);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
@@ -30004,30 +29999,26 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-//importing the display file to show it in the state
-const API_URL = 'https://restcountries.com/v3.1/all'; //I used class here so that it won't be tough for me to handle the if statement
+const API_URL = 'https://restcountries.com/v3.1/all';
 
 function Country() {
-  //these are the states that we are going to access in the browser
   const [countries, setCountries] = (0, _react.useState)([]);
   const [randomCountry, setRandomCountry] = (0, _react.useState)({});
   const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
   const [score, setScore] = (0, _react.useState)(0);
   const [nextButton, setNextButton] = (0, _react.useState)(false);
-  const [userIsWin, setUserIsWin] = (0, _react.useState)(false); // isResult
-
+  const [userIsWin, setUserIsWin] = (0, _react.useState)(false);
   const [showAnswer, setShowAnswer] = (0, _react.useState)(false);
   const [IsStart, setIsStart] = (0, _react.useState)(false);
   const [number, setNumber] = (0, _react.useState)(0);
   const [loading, setLoading] = (0, _react.useState)(true);
-  const rightAnswer = (0, _react.useRef)(null); //We use useEffect in hooks to fecth the data by creating this async function
+  const rightAnswer = (0, _react.useRef)(null);
 
   const fetchCountriesFromApi = async () => {
     const response = await fetch(API_URL);
     const countryData = await response.json();
     setCountries(countryData);
-  }; //run the fetch countries at once and random it after the button is clicked
-
+  };
 
   (0, _react.useEffect)(() => {
     fetchCountriesFromApi();
@@ -30038,30 +30029,30 @@ function Country() {
 
     setIsStart(true);
     if (countries.length === 0) return null;
-    const randomName = countries[Math.floor(Math.random() * countries.length)];
-    const randomFirstOption = countries[Math.floor(Math.random() * countries.length)];
-    const randomSecondOption = countries[Math.floor(Math.random() * countries.length)];
-    const randomThirdOption = countries[Math.floor(Math.random() * countries.length)]; //To get the names from the randoms
-
+    const randomName = countries && countries[Math.floor(Math.random() * countries.length)];
+    const randomFirstOption = countries && countries[Math.floor(Math.random() * countries.length)];
+    const randomSecondOption = countries && countries[Math.floor(Math.random() * countries.length)];
+    const randomThirdOption = countries && countries[Math.floor(Math.random() * countries.length)];
     const randomOptions = [(_randomName$name = randomName.name) === null || _randomName$name === void 0 ? void 0 : _randomName$name.common, (_randomFirstOption$na = randomFirstOption.name) === null || _randomFirstOption$na === void 0 ? void 0 : _randomFirstOption$na.common, (_randomSecondOption$n = randomSecondOption.name) === null || _randomSecondOption$n === void 0 ? void 0 : _randomSecondOption$n.common, (_randomThirdOption$na = randomThirdOption.name) === null || _randomThirdOption$na === void 0 ? void 0 : _randomThirdOption$na.common];
     randomOptions.sort(() => {
       return 0.5 - Math.random();
-    }); //Set these random in place that need them to be set
-
+    });
     setRandomCountry(randomName);
     setRandomOptions(randomOptions);
   }
 
   function handleClick(e) {
-    if (e.currentTarget.value === randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
+    const choice = e.target.value;
+    const answer = randomCountry.name.common;
+
+    if (choice === answer && !nextButton) {
+      e.target.classList.add("right-answer");
       setNextButton(true);
-      e.currentTarget.classList.add("right-answer");
-      rightAnswer.current.classList.add("wrong-answer");
       setShowAnswer(true);
-    } else if (e.currentTarget.value !== randomCountry && randomCountry !== null && randomCountry !== void 0 && randomCountry.name.common && !nextButton) {
+    } else if (choice !== answer && !nextButton) {
+      rightAnswer.current.classList.add("right-answer"); // console.log(e.currentTarget);
+
       e.currentTarget.classList.add("wrong-answer");
-      console.log(rightAnswer.current);
-      rightAnswer.current.classList.add("right-answer");
       setNextButton(true);
       setShowAnswer(false);
     }
@@ -30079,8 +30070,7 @@ function Country() {
     } else if (!showAnswer) {
       setUserIsWin(true);
     }
-  } //return this component to run or state
-
+  }
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, IsStart ? /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
@@ -30153,7 +30143,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35495" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44395" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,10 +1,5 @@
 import React from 'react'
-
-//import all the component needed
-
 import adventure from './images/undraw_adventure.svg'
-
-//I destructure the variables needed instead of propping it by using props
 
 function QuizComponents({
   randomOptions,
@@ -15,10 +10,9 @@ function QuizComponents({
   rightAnswer,
   number,
 }) {
-  //Return this component when the quiz is opened
-  let countryOption = randomCountry?.name?.common
-  console.log(countryOption);
   
+  const countryOption = randomCountry?.name?.common
+
   return (
     <>
       <header className='headings'>

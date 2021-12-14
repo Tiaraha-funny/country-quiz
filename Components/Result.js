@@ -15,8 +15,6 @@ function Result({
     setNextButton(false);
   }
 
-  console.log(score);
-
   return (
     <div>
       <header className="headings">
