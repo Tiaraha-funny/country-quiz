@@ -18,7 +18,6 @@ function Country() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [IsStart, setIsStart] = useState(false);
   const [number, setNumber] = useState(0);
-  const [loading, setLoading] = useState(true);
 
   const rightAnswer = useRef(null);
 
@@ -29,16 +28,15 @@ function Country() {
     setCountries(countryData);
   };
 
-
-
   useEffect(() => {
     fetchCountriesFromApi();
   }, []);
 
   function getRandomCountry() {
     setIsStart(true)
-
-    if (countries.length === 0) return null;
+    if (countries.length === 0) {
+      return null
+    };
 
     const randomName = countries && countries[Math.floor(Math.random() * countries.length)];
     const randomFirstOption = countries &&
@@ -74,7 +72,6 @@ function Country() {
       setShowAnswer(true);
     } else if (choice !== answer && !nextButton) {
       rightAnswer.current.classList.add("right-answer");
-      // console.log(e.currentTarget);
       e.currentTarget.classList.add("wrong-answer");
       setNextButton(true);
       setShowAnswer(false);
@@ -95,11 +92,15 @@ function Country() {
   }
 
 
+  function startGame() {
+    setIsStart(true)
+    getRandomCountry()
+  }
 
   return (
     <>
       {IsStart ? (
-        <div className="container">
+        <div role='definition' className="container">
           {userIsWin ? (
             <Result
               score={score}
@@ -111,7 +112,7 @@ function Country() {
               setNextButton={setNextButton}
             />
           ) : (
-            <>{!countries.length === 0
+            <>{!countries
               ? <h3>Loading...</h3>
               : <QuizComponents
                 randomCountry={randomCountry}
@@ -127,11 +128,11 @@ function Country() {
           )}
         </div>
       ) : (
-        <div className="startBtn">
+        <div role='button' className="startBtn">
           <header className="headings__start">
             <h1>Country Quiz</h1>
           </header>
-          <button onClick={getRandomCountry} className="startQuiz">
+          <button role='button' onClick={startGame} className="startQuiz">
             Start Game
           </button>
         </div>

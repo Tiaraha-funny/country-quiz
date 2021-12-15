@@ -16,20 +16,20 @@ function Result({
   }
 
   return (
-    <div>
+    <div role='dialog'>
       <header className="headings">
         <h1>Country Quiz</h1>
       </header>
-      <div className="modal-main">
-        <div className="main-wrapper">
-          <div>
+      <div role='article' className="modal-main">
+        <div role='contentinfo' className="main-wrapper">
+          <div role='img'>
             <img src={winSvg} />
           </div>
           <h2>Results</h2>
           <p>
             You got <b className="score">{score}</b> correct answers
           </p>
-          <button className="tryAgainBtn" onClick={handleClickBtn}>
+          <button role='button' className="tryAgainBtn" onClick={handleClickBtn}>
             Try again
           </button>
         </div>
