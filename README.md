@@ -1,12 +1,13 @@
 # Country Quiz
 
-## Design
-
-You can see the design [here](https://country-quiz-petah.netlify.app/)
 
 ## Demo
 
-[Country quiz app](https://github.com/Tiaraha-funny/country-quiz)
+[Country quiz app](https://country-quiz-petah.netlify.app/)
+
+## Design
+
+You can see the design [here](https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1/Country-Quiz?node-id=1%3A130)
 
 ## **Features**
 
