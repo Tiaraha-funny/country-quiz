@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
-
 import QuizComponents from "./QuizComponents";
 import Result from "./Result";
 
-const API_URL = 'https://restcountries.com/v3.1/all'
+const API_URL = "https://restcountries.com/v3.1/all";
 
-
-function Country() {
-
+const Country = () => {
+  const rightAnswer = useRef(null);
   const [countries, setCountries] = useState([]);
   const [randomCountry, setRandomCountry] = useState({});
   const [randomOptions, setRandomOptions] = useState([]);
@@ -16,11 +14,8 @@ function Country() {
   const [nextButton, setNextButton] = useState(false);
   const [userIsWin, setUserIsWin] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [IsStart, setIsStart] = useState(false);
+  const [isStart, setIsStart] = useState(false);
   const [number, setNumber] = useState(0);
-
-  const rightAnswer = useRef(null);
-
 
   const fetchCountriesFromApi = async () => {
     const response = await fetch(API_URL);
@@ -32,53 +27,40 @@ function Country() {
     fetchCountriesFromApi();
   }, []);
 
-  function getRandomCountry() {
-    setIsStart(true)
-    if (countries.length === 0) {
-      return null
-    };
+  const getRandomCountry = () => {
+    setIsStart(true);
+    if (countries.length === 0) return;
 
-    const randomName = countries && countries[Math.floor(Math.random() * countries.length)];
-    const randomFirstOption = countries &&
-      countries[Math.floor(Math.random() * countries.length)];
-    const randomSecondOption = countries &&
-      countries[Math.floor(Math.random() * countries.length)];
-    const randomThirdOption = countries &&
+    const getRandom = () =>
       countries[Math.floor(Math.random() * countries.length)];
 
-
-    const randomOptions = [
-      randomName.name?.common,
-      randomFirstOption.name?.common,
-      randomSecondOption.name?.common,
-      randomThirdOption.name?.common,
-    ];
-
-    randomOptions.sort(() => {
-      return 0.5 - Math.random();
-    });
+    const randomName = getRandom();
+    const randomOptions = [randomName, getRandom(), getRandom(), getRandom()]
+      .map((country) => country.name?.common)
+      .sort(() => Math.random() - 0.5);
 
     setRandomCountry(randomName);
     setRandomOptions(randomOptions);
-  }
+  };
 
-  function handleClick(e) {
-    const choice = e.target.value
+  const handleClick = (e) => {
+    const choice = e.currentTarget.value;
     const answer = randomCountry.name.common;
-   
-    if (choice === answer && !nextButton) {
-      e.target.classList.add("right-answer");
-      setNextButton(true);
-      setShowAnswer(true);
-    } else if (choice !== answer && !nextButton) {
-      rightAnswer.current.classList.add("right-answer");
-      e.currentTarget.classList.add("wrong-answer");
-      setNextButton(true);
-      setShowAnswer(false);
-    }
-  }
 
-  function checkWin(e) {
+    if (!nextButton) {
+      if (choice === answer) {
+        e.currentTarget.classList.add("right-answer");
+        setShowAnswer(true);
+      } else {
+        rightAnswer.current.classList.add("right-answer");
+        e.currentTarget.classList.add("wrong-answer");
+        setShowAnswer(false);
+      }
+      setNextButton(true);
+    }
+  };
+
+  const checkWin = () => {
     setNumber(Math.floor(Math.random() * 3));
     rightAnswer.current.classList.remove("right-answer");
     if (showAnswer) {
@@ -86,21 +68,20 @@ function Country() {
       setNextButton(false);
       setUserIsWin(false);
       setScore((prevScore) => prevScore + 1);
-    } else if (!showAnswer) {
+    } else {
       setUserIsWin(true);
     }
-  }
+  };
 
-
-  function startGame() {
-    setIsStart(true)
-    getRandomCountry()
-  }
+  const startGame = () => {
+    setIsStart(true);
+    getRandomCountry();
+  };
 
   return (
     <>
-      {IsStart ? (
-        <div role='definition' className="container">
+      {isStart ? (
+        <div role="definition" className="container">
           {userIsWin ? (
             <Result
               score={score}
@@ -112,33 +93,36 @@ function Country() {
               setNextButton={setNextButton}
             />
           ) : (
-            <>{!countries
-              ? <h3>Loading...</h3>
-              : <QuizComponents
-                randomCountry={randomCountry}
-                randomOptions={randomOptions}
-                nextButton={nextButton}
-                checkWin={checkWin}
-                handleClick={handleClick}
-                rightAnswer={rightAnswer}
-                number={number}
-                countries={countries}
-              />
-            }</>
+            <>
+              {!countries ? (
+                <h3>Loading...</h3>
+              ) : (
+                <QuizComponents
+                  randomCountry={randomCountry}
+                  randomOptions={randomOptions}
+                  nextButton={nextButton}
+                  checkWin={checkWin}
+                  handleClick={handleClick}
+                  rightAnswer={rightAnswer}
+                  number={number}
+                  countries={countries}
+                />
+              )}
+            </>
           )}
         </div>
       ) : (
-        <div role='button' className="startBtn">
+        <div role="button" className="startBtn">
           <header className="headings__start">
             <h1>Country Quiz</h1>
           </header>
-          <button role='button' onClick={startGame} className="startQuiz">
+          <button role="button" onClick={startGame} className="startQuiz">
             Start Game
           </button>
         </div>
       )}
     </>
   );
-}
+};
 
 export default Country;
