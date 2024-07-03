@@ -10,11 +10,13 @@ function QuizComponents({
   rightAnswer,
   number,
 }) {
-  const countryOption = randomCountry?.name?.common;
+  if (!randomCountry) return null;
+
+  const countryOption = randomCountry.name.common;
   let capital =
-    randomCountry?.capital?.length > 1
-      ? randomCountry?.capital.join(" ")
-      : randomCountry?.capital;
+    randomCountry.capital.length > 1
+      ? randomCountry.capital.join(" ")
+      : randomCountry.capital;
 
   return (
     <>
@@ -31,17 +33,19 @@ function QuizComponents({
           <div role="contentinfo" className="content">
             {number === 0 && <h3>{capital} is the capital of</h3>}
             {number === 1 && (
-              <h3>{randomCountry?.demonyms?.eng?.f} are people from</h3>
+              <h3>
+                {randomCountry.demonyms.eng.f || "Unknown"} are people from
+              </h3>
             )}
             {number === 2 && (
-              <header>
+              <div>
                 <img
-                  src={randomCountry?.flags?.svg}
+                  src={randomCountry.flags.svg || ""}
                   className="images"
                   alt="flag"
                 />
                 <h3>Which country does this flag belong to?</h3>
-              </header>
+              </div>
             )}
           </div>
 

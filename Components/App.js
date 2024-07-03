@@ -36,7 +36,7 @@ const Country = () => {
 
     const randomName = getRandom();
     const randomOptions = [randomName, getRandom(), getRandom(), getRandom()]
-      .map((country) => country.name?.common)
+      .map((country) => country.name.common)
       .sort(() => Math.random() - 0.5);
 
     setRandomCountry(randomName);

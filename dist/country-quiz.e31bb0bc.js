@@ -41252,8 +41252,9 @@ function QuizComponents({
   rightAnswer,
   number
 }) {
-  const countryOption = randomCountry?.name?.common;
-  let capital = randomCountry?.capital?.length > 1 ? randomCountry?.capital.join(" ") : randomCountry?.capital;
+  if (!randomCountry) return null;
+  const countryOption = randomCountry.name.common;
+  let capital = randomCountry.capital.length > 1 ? randomCountry.capital.join(" ") : randomCountry.capital;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
     className: "headings"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz")), /*#__PURE__*/_react.default.createElement("div", {
@@ -41269,8 +41270,8 @@ function QuizComponents({
   }), /*#__PURE__*/_react.default.createElement("div", {
     role: "contentinfo",
     className: "content"
-  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, capital, " is the capital of"), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry?.demonyms?.eng?.f, " are people from"), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: randomCountry?.flags?.svg,
+  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, capital, " is the capital of"), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.demonyms.eng.f || "Unknown", " are people from"), number === 2 && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomCountry.flags.svg || "",
     className: "images",
     alt: "flag"
   }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?"))), /*#__PURE__*/_react.default.createElement("div", {
@@ -41334,7 +41335,7 @@ function Result({
     role: "img"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_winners.default
-  })), /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got:", /*#__PURE__*/_react.default.createElement("q", null, " ", score), " correct ", score < 1 ? "answer" : "answers"), /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got:", /*#__PURE__*/_react.default.createElement("q", null, " ", score), " correct ", score <= 1 ? "answer" : "answers"), /*#__PURE__*/_react.default.createElement("button", {
     role: "button",
     className: "tryAgainBtn",
     onClick: handleClickBtn
@@ -41380,7 +41381,7 @@ const Country = () => {
     if (countries.length === 0) return;
     const getRandom = () => countries[Math.floor(Math.random() * countries.length)];
     const randomName = getRandom();
-    const randomOptions = [randomName, getRandom(), getRandom(), getRandom()].map(country => country.name?.common).sort(() => Math.random() - 0.5);
+    const randomOptions = [randomName, getRandom(), getRandom(), getRandom()].map(country => country.name.common).sort(() => Math.random() - 0.5);
     setRandomCountry(randomName);
     setRandomOptions(randomOptions);
   };
@@ -41484,7 +41485,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37399" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38137" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
