@@ -127,6 +127,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 'use strict';
 
 if ("development" !== "production") {
@@ -179,6 +180,7 @@ if ("development" !== "production") {
        */
       current: null
     };
+
     /**
      * Keeps track of the current batch's configuration such as how long an update
      * should suspend for if it needs to.
@@ -1144,6 +1146,7 @@ if ("development" !== "production") {
       });
       return n;
     }
+
     /**
      * Iterates through children that are typically specified as `props.children`.
      *
@@ -2530,6 +2533,7 @@ if ("development" === 'production') {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 'use strict';
 
 if ("development" !== "production") {
@@ -3067,6 +3071,7 @@ if ("development" === 'production') {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 'use strict';
 
 if ("development" !== "production") {
@@ -3715,6 +3720,7 @@ if ("development" !== "production") {
         }
       }
     }
+
     /**
      * Get the value for a property on a node. Only used in DEV for SSR validation.
      * The "expected" argument is used as a hint of what the expected value is.
@@ -5240,6 +5246,7 @@ if ("development" !== "production") {
     var COMMENT_NODE = 8;
     var DOCUMENT_NODE = 9;
     var DOCUMENT_FRAGMENT_NODE = 11;
+
     /**
      * Set the textContent property of a node. For text updates, it's faster
      * to set the `nodeValue` of the Text node directly instead of using
@@ -5385,6 +5392,7 @@ if ("development" !== "production") {
         isUnitlessNumber[prefixKey(prefix, prop)] = isUnitlessNumber[prop];
       });
     });
+
     /**
      * Convert a value into the proper css writable value. The style name `name`
      * should be logical (no hyphens), as specified
@@ -5510,6 +5518,7 @@ if ("development" !== "production") {
       };
     }
     var warnValidStyle$1 = warnValidStyle;
+
     /**
      * Operations for dealing with CSS properties.
      */
@@ -8959,6 +8968,7 @@ if ("development" !== "production") {
       });
       return listener;
     }
+
     /**
      * These variables store information about text content of a target node,
      * allowing comparison of content before and after a given event.
@@ -28910,6 +28920,7 @@ if ("development" === 'production') {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 'use strict';
 
 if ("development" !== "production") {
@@ -41258,25 +41269,24 @@ function QuizComponents({
   }), /*#__PURE__*/_react.default.createElement("div", {
     role: "contentinfo",
     className: "content"
-  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, capital, " is the the capital of "), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry?.demonyms?.eng.f, " are people from "), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: randomCountry.flags.svg,
-    className: "images"
+  }, number === 0 && /*#__PURE__*/_react.default.createElement("h3", null, capital, " is the capital of"), number === 1 && /*#__PURE__*/_react.default.createElement("h3", null, randomCountry?.demonyms?.eng?.f, " are people from"), number === 2 && /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomCountry?.flags?.svg,
+    className: "images",
+    alt: "flag"
   }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?"))), /*#__PURE__*/_react.default.createElement("div", {
     role: "option",
     className: "btn-wrapper"
-  }, ["A", "B", "C", "D"].map((choice, index) => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      key: index,
-      role: "button",
-      value: randomOptions[index],
-      onClick: handleClick,
-      ref: randomOptions[index] === countryOption ? rightAnswer : null
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "item"
-    }, choice), /*#__PURE__*/_react.default.createElement("div", {
-      className: "name"
-    }, " ", randomOptions[index]));
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }, ["A", "B", "C", "D"].map((choice, index) => /*#__PURE__*/_react.default.createElement("button", {
+    key: index,
+    role: "button",
+    value: randomOptions[index],
+    onClick: handleClick,
+    ref: randomOptions[index] === countryOption ? rightAnswer : null
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "item"
+  }, choice), /*#__PURE__*/_react.default.createElement("div", {
+    className: "name"
+  }, randomOptions[index])))), /*#__PURE__*/_react.default.createElement("div", {
     role: "button"
   }, nextButton && /*#__PURE__*/_react.default.createElement("button", {
     role: "button",
@@ -41474,7 +41484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35035" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37399" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
