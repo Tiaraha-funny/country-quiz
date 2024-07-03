@@ -27,7 +27,7 @@ function Result({
           </div>
           <h2>Results</h2>
           <p>
-            You got:<q> {score}</q> correct {score < 1 ? "answer" : "answers"}
+            You got:<q> {score}</q> correct {score <= 1 ? "answer" : "answers"}
           </p>
           <button
             role="button"
